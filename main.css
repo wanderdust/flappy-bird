@@ -8,6 +8,11 @@
     100% {background-position:-1344px top;}
 }
 
+@-webkit-keyframes birdanimation {
+    0% {background-position: 0px -0px;}
+    100%{background-position:-0px -72px;}
+}
+
 body, html {
 	height:100%;
 	margin:0;
@@ -56,4 +61,23 @@ body, html {
 	-webkit-animation-iteration-count: infinite;
 
 	
+}
+
+#gameplay-area{
+	min-height:420px;
+	width:100%;
+	border:solid;
+	position:absolute;
+	bottom:0;
+}
+
+.bird{
+	position:absolute;
+	top:210px;
+	left: 60px;
+	height:24px;
+	width:34px;
+	background-image:url('images/bird.png');
+	background-position: 0px -12px;
+	animation: birdanimation 0.3s steps(3) infinite;
 }
