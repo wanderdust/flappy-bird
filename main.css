@@ -13,6 +13,16 @@
     100%{background-position:-0px -72px;}
 }
 
+@-webkit-keyframes branchAnimationBottom {
+    0% {left: 1200px;}
+    100%{left:-50px;}
+}
+
+@-webkit-keyframes branchAnimationTop {
+    0% {left: 1000px;}
+    100%{left:-50px;}
+}
+
 body, html {
 	height:100%;
 	margin:0;
@@ -91,4 +101,75 @@ body, html {
 	-webkit-animation-duration: 10s;
 	-webkit-animation-timing-function: linear;
 	-webkit-animation-iteration-count: infinite;
+}
+
+.div-branch-bottom{
+	position:absolute;
+	right:0px;
+	bottom:0;
+	width:30px;
+	height:91%;
+	-webkit-animation-name: branchAnimationBottom;
+	-webkit-animation-duration: 9.5s;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-iteration-count: infinite;
+
+}
+
+.branch-bottom{
+	position:absolute;
+	bottom:0;
+	height:100px;
+	width:100%;
+	background-image: url(images/branch.png);
+	background-repeat: repeat-y;
+	background-position:bottom center;
+}
+
+.branch-bottom:after{
+	content:"";
+	height:55px;
+	width:30px;
+	background-image:url(images/fork_head.png);
+	background-position:center;
+	display:inline-block;
+	position:absolute;
+	top:-55px;
+}
+
+
+.div-branch-top{
+	position:absolute;
+	top:32px;
+	left:900px;
+	width:30px;
+	height:91%;
+	-webkit-animation-name: branchAnimationTop;
+	-webkit-animation-duration: 7.8s;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-iteration-count: infinite;
+
+	
+}
+
+.branch-top{
+	position:absolute;
+	top:0;
+	height:110px;
+	width:100%;
+	background-image: url(images/branch.png);
+	background-repeat: repeat-y;
+	background-position:bottom center;
+}
+
+
+.branch-top:after{
+	content:"";
+	height:55px;
+	width:30px;
+	background-image:url(images/fork_head_down.png);
+	background-position:center;
+	display:inline-block;
+	position:absolute;
+	bottom:-55px;
 }
