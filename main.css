@@ -1,6 +1,7 @@
+
+
 body, html {
 	height:100%;
-	width:100%;
 	margin:0;
 	padding:0;
 }
@@ -8,8 +9,36 @@ body, html {
 #container{
 	width:100%;
 	height:100%;
-	border:solid;
-	overflow:hidden;
-	position:fixed;
 }
 
+#container-game{
+	width:100%;
+	height:100%;
+	
+}
+
+#container-sky{
+	position:absolute;
+	top:0;
+	height:80%;
+	width:100%;
+	background-image: url(images/sky.png);
+	background-position:center bottom;
+	background-repeat: repeat-x;
+	background-color:#6FBCCC;
+
+	
+
+
+}
+
+#container-floor{
+	position:absolute;
+	bottom:0;
+	height:20%;
+	width:100%;
+	background-image: url(images/land.png);
+	background-repeat: repeat-x;
+	background-color:#ded895;
+	
+}
