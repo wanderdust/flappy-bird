@@ -13,14 +13,14 @@
     100%{background-position:-0px -72px;}
 }
 
-@-webkit-keyframes branchAnimationBottom {
-    0% {left: 1200px;}
-    100%{left:-50px;}
+@-webkit-keyframes obstacleAnimationBottom {
+    0% {left: 1400px;}
+    100%{left:-100px;}
 }
 
-@-webkit-keyframes branchAnimationTop {
-    0% {left: 1000px;}
-    100%{left:-50px;}
+@-webkit-keyframes obstacleAnimationTop {
+    0% {left: 1200px;}
+    100%{left:-100px;}
 }
 
 body, html {
@@ -103,73 +103,75 @@ body, html {
 	-webkit-animation-iteration-count: infinite;
 }
 
-.div-branch-bottom{
+.div-obstacle-bottom{
 	position:absolute;
 	right:0px;
 	bottom:0;
-	width:30px;
+	width:90px;
 	height:91%;
-	-webkit-animation-name: branchAnimationBottom;
-	-webkit-animation-duration: 9.4s;
+	-webkit-animation-name: obstacleAnimationBottom;
+	-webkit-animation-duration: 11.225s;
 	-webkit-animation-timing-function: linear;
 	-webkit-animation-iteration-count: infinite;
 
 }
 
-.branch-bottom{
+.obstacle-bottom{
 	position:absolute;
 	bottom:0;
-	height:100px;
+	height:140px;
 	width:100%;
-	background-image: url(images/branch.png);
+	background-image: url(images/obstacle.png);
 	background-repeat: repeat-y;
 	background-position:bottom center;
 }
 
-.branch-bottom:after{
+.obstacle-bottom:after{
 	content:"";
-	height:55px;
-	width:30px;
-	background-image:url(images/fork_head.png);
+	height:39px;
+	width:90px;
+	background-image:url(images/obstacle-top-up.png);
 	background-position:center;
 	display:inline-block;
 	position:absolute;
-	top:-55px;
+	top:-39px;
+	background-repeat:no-repeat;
 }
 
 
-.div-branch-top{
+.div-obstacle-top{
 	position:absolute;
 	top:32px;
 	left:900px;
-	width:30px;
+	width:90px;
 	height:91%;
-	-webkit-animation-name: branchAnimationTop;
-	-webkit-animation-duration: 7.8s;
+	-webkit-animation-name: obstacleAnimationTop;
+	-webkit-animation-duration: 9.734s;
 	-webkit-animation-timing-function: linear;
 	-webkit-animation-iteration-count: infinite;
 
 	
 }
 
-.branch-top{
+.obstacle-top{
 	position:absolute;
 	top:0;
-	height:110px;
+	height:135px;
 	width:100%;
-	background-image: url(images/branch.png);
+	background-image: url(images/obstacle-down.png);
 	background-repeat: repeat-y;
 	background-position:bottom center;
 }
 
 
-.branch-top:after{
+.obstacle-top:after{
 	content:"";
-	height:55px;
-	width:30px;
-	background-image:url(images/fork_head_down.png);
+	height:39px;
+	width:90px;
+	background-image:url(images/obstacle-top-down.png);
 	background-position:center;
 	display:inline-block;
 	position:absolute;
-	bottom:-55px;
+	bottom:-39px;
+	background-repeat:no-repeat;
 }
