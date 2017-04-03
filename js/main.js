@@ -9,7 +9,6 @@ $(document).ready(function() {
    
    setInterval(mainloop, fps);    //Actualiza la posición del pajaro en cada frame
    
-   
 })
 
 function mainloop() {
