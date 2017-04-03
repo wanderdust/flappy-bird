@@ -23,22 +23,23 @@ function mainloop() {
 
    //Limites 
       // 1. Limites suelo-Game over
-   if (position > 391){
+   if (position > 397){
       gravity = 0; 
       velocity = 0;
-      noAnimation();    
+      noAnimation(); 
+      position=397;   
    }
       // 2. Limites techo-rebote abajo
    if(position < 35){
       velocityY = -4;
-      velocity = velocityY  
+      velocity = velocityY;  
    } else {
       velocityY = 12;
    }
 
    // Funcion para saltar. Si toca el suelo deja de funcionar.
    $(document).on("click", function(){
-      if(position<391){
+      if(position<397){
          velocity = velocityY;
       }else(velocity = 0)
    }); 
