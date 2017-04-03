@@ -4,11 +4,12 @@ var position = 210; // posicion del pajaro
 var fps = 45;
 
 var velocityY = 0; // Variable para darle nuevos valores a velocidad
+var random = 0;
+
 
 $(document).ready(function() {   
    
    setInterval(mainloop, fps);    //Actualiza la posición del pajaro en cada frame
-   
 })
 
 function mainloop() {
@@ -32,7 +33,7 @@ function mainloop() {
       // 2. Limites techo-rebote abajo
    if(position < 35){
       velocityY = -4;
-      velocity = velocityY;  
+      velocity = velocityY;
    } else {
       velocityY = 12;
    }
@@ -43,9 +44,10 @@ function mainloop() {
          velocity = velocityY;
       }else(velocity = 0)
    }); 
-}
 
    
+}
+
 
 //funcion para desactivar animaciones css
 
@@ -57,4 +59,13 @@ function noAnimation (){
    $(".ceiling").css({"-webkit-animation-play-state": 'paused'});
    $(".bird").css({"-webkit-animation-play-state": 'paused'})
 }
+
+//Intento de generador de obstaculos
+
+ /*function obstacleGenerator() {
+   if($(".div-obstacle-bottom").position().left.toFixed(0) < 900 & $(".div-obstacle-bottom").position().left.toFixed(0) >897){
+      $(".div-obstacle-bottom").after("<div class='div-obstacle-bottom'><div class='obstacle-bottom'></div></div>")
+   }
+   
+}*/
 

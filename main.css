@@ -13,15 +13,12 @@
     100%{background-position:-0px -72px;}
 }
 
-@-webkit-keyframes obstacleAnimationBottom {
+@-webkit-keyframes obstacleAnimation {
     0% {left: 1400px;}
     100%{left:-100px;}
 }
 
-@-webkit-keyframes obstacleAnimationTop {
-    0% {left: 1200px;}
-    100%{left:-100px;}
-}
+
 
 body, html {
 	height:100%;
@@ -104,11 +101,11 @@ body, html {
 
 .div-obstacle-bottom{
 	position:absolute;
-	right:0px;
+	left:0px;
 	bottom:0;
 	width:90px;
 	height:91%;
-	-webkit-animation-name: obstacleAnimationBottom;
+	-webkit-animation-name: obstacleAnimation;
 	-webkit-animation-duration: 11.225s;
 	-webkit-animation-timing-function: linear;
 	-webkit-animation-iteration-count: infinite;
@@ -118,7 +115,7 @@ body, html {
 .obstacle-bottom{
 	position:absolute;
 	bottom:0;
-	height:140px;
+	height:100px;
 	width:100%;
 	background-image: url(images/obstacle.png);
 	background-repeat: repeat-y;
@@ -144,8 +141,8 @@ body, html {
 	left:900px;
 	width:90px;
 	height:91%;
-	-webkit-animation-name: obstacleAnimationTop;
-	-webkit-animation-duration: 9.734s;
+	-webkit-animation-name: obstacleAnimation;
+	-webkit-animation-duration: 11.225s;
 	-webkit-animation-timing-function: linear;
 	-webkit-animation-iteration-count: infinite;
 
@@ -155,7 +152,7 @@ body, html {
 .obstacle-top{
 	position:absolute;
 	top:0;
-	height:135px;
+	height:120px;
 	width:100%;
 	background-image: url(images/obstacle-down.png);
 	background-repeat: repeat-y;
