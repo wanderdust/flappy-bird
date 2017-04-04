@@ -4,15 +4,14 @@ var position = 210; // posicion del pajaro
 var fps = 45;
 
 var velocityY = 0; // Variable para darle nuevos valores a velocidad
-//var random = (Math.floor(Math.random() * 1001) + 3000); //Numero aleatorio para generar obstaculos
-var i = 59;
+//var random = 2000; //Numero aleatorio para generar obstaculos
+var obstacleCount = 44;
 var j = -1;
 
 $(document).ready(function() {   
    
    var gameInterval = setInterval(mainloop, fps);    //Actualiza la posición del pajaro en cada frame
-   
-   
+   //setInterval(obstacleGenerator, random) //Opcion para crear los obstaculos
 
 });
 
@@ -22,6 +21,7 @@ function mainloop() {
    
    velocity -= gravity;
    position -= velocity; 
+   
    
 
    // Aqui los pasamos el valor de la posicion en cada momento al CSS.
@@ -33,7 +33,8 @@ function mainloop() {
       gravity = 0; 
       velocity = 0;
       noAnimation(); 
-      position=397;  
+      position=397;
+      obstacleCount = 46;
 
    };
       // 2. Limites techo-rebote abajo
@@ -50,16 +51,18 @@ function mainloop() {
          velocity = velocityY;
       }else(velocity = 0)
    }); 
-     
-   i++;
-   console.log();
 
-   if (i === 60){
+   //Bucle para generar obstaculos
+   
+   obstacleCount++;
+   if (obstacleCount === 45){
       obstacleGenerator();
-      i = 0;
+      obstacleCount = 0;
    }
    
    obstacleDelete();
+
+
 };
 
    
@@ -74,14 +77,14 @@ function noAnimation (){
    $(".bird").css({"-webkit-animation-play-state": 'paused'})
 };
 
+// Funcion que generalos obstaculos entre 1 y 4 segundos
 function obstacleGenerator (){
-
    $("#"+j).after("<div class='obstacle-animated' id="+(j+1)+" ><div class='obstacle-top'></div><div class='obstacle-bottom'></div></div>")
-   j++;
-   console.log(j);
-
-   
+   j++; 
 };
+
+
+//Funcion que elimina los obstaculos cuando desparecen de la pantalla
 
 function obstacleDelete(){
    if ($(".obstacle-animated:first").position().left < -90){
@@ -89,4 +92,5 @@ function obstacleDelete(){
 
    }
 };
+
 
