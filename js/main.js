@@ -4,21 +4,25 @@ var position = 210; // posicion del pajaro
 var fps = 45;
 
 var velocityY = 0; // Variable para darle nuevos valores a velocidad
-var random = (Math.floor(Math.random() * 1001) + 3000);
-
+//var random = (Math.floor(Math.random() * 1001) + 3000); //Numero aleatorio para generar obstaculos
+var i = 0;
+var j = -1;
 
 $(document).ready(function() {   
    
-   setInterval(mainloop, fps);    //Actualiza la posición del pajaro en cada frame
-   setInterval(obstacleGenerator , random) //Generador de obstaculos cada 3-4 segundos
-})
+   var gameInterval = setInterval(mainloop, fps);    //Actualiza la posición del pajaro en cada frame
+   
+   
+
+});
 
 function mainloop() {
    var player = $(".bird");
    
+   
    velocity -= gravity;
    position -= velocity; 
-   console.log();
+   
 
    // Aqui los pasamos el valor de la posicion en cada momento al CSS.
    $(".bird").css({"top": position + "px"}) 
@@ -29,15 +33,16 @@ function mainloop() {
       gravity = 0; 
       velocity = 0;
       noAnimation(); 
-      position=397;   
-   }
+      position=397;  
+
+   };
       // 2. Limites techo-rebote abajo
    if(position < 35){
       velocityY = -4;
       velocity = velocityY;
    } else {
       velocityY = 12;
-   }
+   };
 
    // Funcion para saltar. Si toca el suelo deja de funcionar.
    $(document).on("click", function(){
@@ -45,9 +50,17 @@ function mainloop() {
          velocity = velocityY;
       }else(velocity = 0)
    }); 
+     
+   i++;
+   console.log();
+
+   if (i === 40){
+      obstacleGenerator();
+      i = 0;
+   }
    
-   //obstacleDelete()
-}
+   obstacleDelete();
+};
 
    
 
@@ -59,24 +72,21 @@ function noAnimation (){
    $(".obstacle-animated").css({"-webkit-animation-play-state": 'paused'});
    $(".ceiling").css({"-webkit-animation-play-state": 'paused'});
    $(".bird").css({"-webkit-animation-play-state": 'paused'})
-}
+};
 
-function obstacleGenerator (){ //Seguir probando con arrays a ver.
-   $("#obstacle").after("<div id='obstacle' class='obstacle-animated'><div class='obstacle-top'></div><div class='obstacle-bottom'></div></div>")
-}
-    //$(".div-obstacle-bottom").after("<div class='div-obstacle-bottom'><div class='obstacle-bottom'></div></div>")
+function obstacleGenerator (){
 
-//Intento de generador de obstaculos por posicion
+   $("#"+j).after("<div class='obstacle-animated' id="+(j+1)+" ><div class='obstacle-top'></div><div class='obstacle-bottom'></div></div>")
+   j++;
+   console.log(j);
 
- /*function obstacleGenerator() {
-   if($(".div-obstacle-bottom").position().left.toFixed(0) < 900 & $(".div-obstacle-bottom").position().left.toFixed(0) >897){
-      $(".div-obstacle-bottom").after("<div class='div-obstacle-bottom'><div class='obstacle-bottom'></div></div>")
-   }
    
-}*/
+};
 
 function obstacleDelete(){
-   if ($("#obstacle").position().left < -90){
-      $("#obstacle").prev().remove();
+   if ($(".obstacle-animated:first").position().left < -90){
+      $(".obstacle-animated:first").remove();
+
    }
-}
+};
+

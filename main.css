@@ -99,7 +99,7 @@ body, html {
 	-webkit-animation-iteration-count: infinite;
 }
 
-#obstacle{
+.obstacle-animated{
 	position:absolute;
 	left:0px;
 	bottom:0;
