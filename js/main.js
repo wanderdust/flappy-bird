@@ -4,12 +4,13 @@ var position = 210; // posicion del pajaro
 var fps = 45;
 
 var velocityY = 0; // Variable para darle nuevos valores a velocidad
-var random = 0;
+var random = (Math.floor(Math.random() * 1001) + 3000);
 
 
 $(document).ready(function() {   
    
    setInterval(mainloop, fps);    //Actualiza la posición del pajaro en cada frame
+   //setInterval(obstacleGenerator , random) //Generador de obstaculos cada 3-4 segundos
 })
 
 function mainloop() {
@@ -17,7 +18,7 @@ function mainloop() {
    
    velocity -= gravity;
    position -= velocity; 
-   console.log(velocity);
+   console.log();
 
    // Aqui los pasamos el valor de la posicion en cada momento al CSS.
    $(".bird").css({"top": position + "px"}) 
@@ -44,10 +45,11 @@ function mainloop() {
          velocity = velocityY;
       }else(velocity = 0)
    }); 
-
    
+   obstacleDelete()
 }
 
+   
 
 //funcion para desactivar animaciones css
 
@@ -60,7 +62,12 @@ function noAnimation (){
    $(".bird").css({"-webkit-animation-play-state": 'paused'})
 }
 
-//Intento de generador de obstaculos
+function obstacleGenerator (){ //Seguir probando con arrays a ver.
+   $(".div-obstacle-bottom").after("<div class='div-obstacle-bottom'><div class='obstacle-bottom'></div></div>")
+}
+    //$(".div-obstacle-bottom").after("<div class='div-obstacle-bottom'><div class='obstacle-bottom'></div></div>")
+
+//Intento de generador de obstaculos por posicion
 
  /*function obstacleGenerator() {
    if($(".div-obstacle-bottom").position().left.toFixed(0) < 900 & $(".div-obstacle-bottom").position().left.toFixed(0) >897){
@@ -69,3 +76,8 @@ function noAnimation (){
    
 }*/
 
+function obstacleDelete(){
+   if ($(".div-obstacle-bottom").position().left < -90){
+      $(".div-obstacle-bottom").remove();
+   }
+}
