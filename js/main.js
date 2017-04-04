@@ -25,7 +25,7 @@ function mainloop() {
    
 
    // Aqui los pasamos el valor de la posicion en cada momento al CSS.
-   $(".bird").css({"top": position + "px"}) 
+   player.css({"top": position + "px"}) 
 
    //Limites 
       // 1. Limites suelo-Game over
@@ -79,8 +79,20 @@ function noAnimation (){
 
 // Funcion que generalos obstaculos entre 1 y 4 segundos
 function obstacleGenerator (){
+   var i = j+1;
+
    $("#"+j).after("<div class='obstacle-animated' id="+(j+1)+" ><div class='obstacle-top'></div><div class='obstacle-bottom'></div></div>")
-   j++; 
+
+   var randomNumber = (Math.random()*5.9)+1.1
+   var heightTop = 210/randomNumber;
+   var heightBottom = 210-heightTop
+
+     $("#"+i+" .obstacle-top").css({"height": heightTop + "px"})
+   $("#"+i+" .obstacle-bottom").css({"height": heightBottom + "px"})
+
+   j++;
+
+   console.log(randomNumber)
 };
 
 
