@@ -5,7 +5,7 @@ var fps = 45;
 
 var velocityY = 0; // Variable para darle nuevos valores a velocidad
 //var random = (Math.floor(Math.random() * 1001) + 3000); //Numero aleatorio para generar obstaculos
-var i = 0;
+var i = 59;
 var j = -1;
 
 $(document).ready(function() {   
@@ -54,7 +54,7 @@ function mainloop() {
    i++;
    console.log();
 
-   if (i === 40){
+   if (i === 60){
       obstacleGenerator();
       i = 0;
    }
