@@ -99,12 +99,12 @@ body, html {
 	-webkit-animation-iteration-count: infinite;
 }
 
-.div-obstacle-bottom{
+#obstacle{
 	position:absolute;
 	left:0px;
 	bottom:0;
 	width:90px;
-	height:91%;
+	height:92.3%;
 	-webkit-animation-name: obstacleAnimation;
 	-webkit-animation-duration: 11.225s;
 	-webkit-animation-timing-function: linear;
@@ -114,7 +114,7 @@ body, html {
 
 .obstacle-bottom{
 	position:absolute;
-	bottom:0;
+	bottom:0px;
 	height:100px;
 	width:100%;
 	background-image: url(images/obstacle.png);
@@ -134,24 +134,9 @@ body, html {
 	background-repeat:no-repeat;
 }
 
-
-.div-obstacle-top{
-	position:absolute;
-	top:32px;
-	left:900px;
-	width:90px;
-	height:91%;
-	-webkit-animation-name: obstacleAnimation;
-	-webkit-animation-duration: 11.225s;
-	-webkit-animation-timing-function: linear;
-	-webkit-animation-iteration-count: infinite;
-
-	
-}
-
 .obstacle-top{
 	position:absolute;
-	top:0;
+	top:0px;
 	height:120px;
 	width:100%;
 	background-image: url(images/obstacle-down.png);

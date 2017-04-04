@@ -10,7 +10,7 @@ var random = (Math.floor(Math.random() * 1001) + 3000);
 $(document).ready(function() {   
    
    setInterval(mainloop, fps);    //Actualiza la posición del pajaro en cada frame
-   //setInterval(obstacleGenerator , random) //Generador de obstaculos cada 3-4 segundos
+   setInterval(obstacleGenerator , random) //Generador de obstaculos cada 3-4 segundos
 })
 
 function mainloop() {
@@ -25,7 +25,7 @@ function mainloop() {
 
    //Limites 
       // 1. Limites suelo-Game over
-   if (position > 397){
+   if (position >= 397){
       gravity = 0; 
       velocity = 0;
       noAnimation(); 
@@ -46,7 +46,7 @@ function mainloop() {
       }else(velocity = 0)
    }); 
    
-   obstacleDelete()
+   //obstacleDelete()
 }
 
    
@@ -56,14 +56,13 @@ function mainloop() {
 function noAnimation (){
    $("#container-floor").css({"-webkit-animation-play-state": 'paused'});
    $("#container-sky").css({"-webkit-animation-play-state": 'paused'});
-   $(".div-obstacle-top").css({"-webkit-animation-play-state": 'paused'});
-   $(".div-obstacle-bottom").css({"-webkit-animation-play-state": 'paused'});
+   $(".obstacle-animated").css({"-webkit-animation-play-state": 'paused'});
    $(".ceiling").css({"-webkit-animation-play-state": 'paused'});
    $(".bird").css({"-webkit-animation-play-state": 'paused'})
 }
 
 function obstacleGenerator (){ //Seguir probando con arrays a ver.
-   $(".div-obstacle-bottom").after("<div class='div-obstacle-bottom'><div class='obstacle-bottom'></div></div>")
+   $("#obstacle").after("<div id='obstacle' class='obstacle-animated'><div class='obstacle-top'></div><div class='obstacle-bottom'></div></div>")
 }
     //$(".div-obstacle-bottom").after("<div class='div-obstacle-bottom'><div class='obstacle-bottom'></div></div>")
 
@@ -77,7 +76,7 @@ function obstacleGenerator (){ //Seguir probando con arrays a ver.
 }*/
 
 function obstacleDelete(){
-   if ($(".div-obstacle-bottom").position().left < -90){
-      $(".div-obstacle-bottom").remove();
+   if ($("#obstacle").position().left < -90){
+      $("#obstacle").prev().remove();
    }
 }
