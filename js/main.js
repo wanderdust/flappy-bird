@@ -1,4 +1,4 @@
-var gravity = 0.9; // Constante
+var gravity = 1; // Constante
 var velocity = 9; // Velocidad. Disminuye por la gravedad.
 var position = 210; // posicion del pajaro
 var fps = 45;
@@ -83,11 +83,11 @@ function obstacleGenerator (){
 
    $("#"+j).after("<div class='obstacle-animated' id="+(j+1)+" ><div class='obstacle-top'></div><div class='obstacle-bottom'></div></div>")
 
-   var randomNumber = (Math.random()*5.9)+1.1
-   var heightTop = 210/randomNumber;
-   var heightBottom = 210-heightTop
+   var randomNumber = (Math.floor(Math.random()*210)+1);
+   var heightTop = randomNumber;
+   var heightBottom = 210-randomNumber;
 
-     $("#"+i+" .obstacle-top").css({"height": heightTop + "px"})
+   $("#"+i+" .obstacle-top").css({"height": heightTop + "px"})
    $("#"+i+" .obstacle-bottom").css({"height": heightBottom + "px"})
 
    j++;
