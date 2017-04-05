@@ -86,9 +86,9 @@ function obstacleGenerator (){
 
    $("#"+j).after("<div class='obstacle-animated' id="+(j+1)+" ><div class='obstacle-top'></div><div class='obstacle-bottom'></div></div>")
 
-   var randomNumber = (Math.floor(Math.random()*210)+1);
+   var randomNumber = (Math.floor(Math.random()*(235))+1);
    var heightTop = randomNumber;
-   var heightBottom = 210-randomNumber;
+   var heightBottom = 265-randomNumber;
 
    $("#"+i+" .obstacle-top").css({"height": heightTop + "px"})
    $("#"+i+" .obstacle-bottom").css({"height": heightBottom + "px"})
@@ -111,15 +111,22 @@ function obstacleDelete(){
 function isCollide() {
    var bird = $(".bird");
    var ot = $(".obstacle-top");
+   var ob = $(".obstacle-bottom");
    var div = $(".obstacle-animated")
     
-   if( bird.position().left < div.position().left + 90 &&
-       bird.position().left + 34 > div.position().left &&
-       bird.position().top < ot.position().top + ot.height() 
+   if( 60 < div.position().left + 90 &&
+       60 + bird.width() > div.position().left &&
+       bird.position().top < ot.position().top + ot.height() + 30 &&
+       bird.height() + bird.position().top > 0
       ){
       console.log("hoorray")
    }     
    
-
+   if (60 < div.position().left + 90 &&
+   60 + bird.width() > div.position().left &&
+   bird.position().top > 388 - ob.height() &&
+   bird.height() + bird.position().top < 388) {
+    console.log("hoooorray2")
+}
     
 }

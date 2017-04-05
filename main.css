@@ -124,13 +124,13 @@ body, html {
 
 .obstacle-bottom:after{
 	content:"";
-	height:39px;
+	height:6px;
 	width:90px;
 	background-image:url(images/obstacle-top-up.png);
 	background-position:center;
 	display:inline-block;
 	position:absolute;
-	top:-39px;
+	top:-1px;
 	background-repeat:no-repeat;
 }
 
@@ -147,12 +147,12 @@ body, html {
 
 .obstacle-top:after{
 	content:"";
-	height:39px;
+	height:6px;
 	width:90px;
 	background-image:url(images/obstacle-top-down.png);
 	background-position:center;
 	display:inline-block;
 	position:absolute;
-	bottom:-39px;
+	bottom:-1px;
 	background-repeat:no-repeat;
 }
