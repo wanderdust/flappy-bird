@@ -7,6 +7,7 @@ var velocityY = 0; // Variable para darle nuevos valores a velocidad
 //var random = 2000; //Numero aleatorio para generar obstaculos
 var obstacleCount = 44;
 var j = -1;
+var i = 0;
 
 $(document).ready(function() {   
    
@@ -61,7 +62,9 @@ function mainloop() {
    }
    
    obstacleDelete();
+   //console.log($(".obstacle-animated").position().left)
 
+   isCollide();
 
 };
 
@@ -79,7 +82,7 @@ function noAnimation (){
 
 // Funcion que generalos obstaculos entre 1 y 4 segundos
 function obstacleGenerator (){
-   var i = j+1;
+   i = j+1;
 
    $("#"+j).after("<div class='obstacle-animated' id="+(j+1)+" ><div class='obstacle-top'></div><div class='obstacle-bottom'></div></div>")
 
@@ -92,7 +95,6 @@ function obstacleGenerator (){
 
    j++;
 
-   console.log(randomNumber)
 };
 
 
@@ -106,3 +108,18 @@ function obstacleDelete(){
 };
 
 
+function isCollide() {
+   var bird = $(".bird");
+   var ot = $(".obstacle-top");
+   var div = $(".obstacle-animated")
+    
+   if( bird.position().left < div.position().left + 90 &&
+       bird.position().left + 34 > div.position().left &&
+       bird.position().top < ot.position().top + ot.height() 
+      ){
+      console.log("hoorray")
+   }     
+   
+
+    
+}
