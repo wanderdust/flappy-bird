@@ -14,6 +14,7 @@ $(document).ready(function() {
    var gameInterval = setInterval(mainloop, fps);    //Actualiza la posición del pajaro en cada frame
    //setInterval(obstacleGenerator, random) //Opcion para crear los obstaculos
 
+
 });
 
 function mainloop() {
@@ -35,7 +36,8 @@ function mainloop() {
       velocity = 0;
       noAnimation(); 
       position=397;
-      obstacleCount = 46;
+      obstacleCount = 46;//Para el generador de obstáculos
+
 
    };
       // 2. Limites techo-rebote abajo
@@ -59,13 +61,14 @@ function mainloop() {
    if (obstacleCount === 45){
       obstacleGenerator();
       obstacleCount = 0;
+
    }
    
    obstacleDelete();
    //console.log($(".obstacle-animated").position().left)
 
    isCollide();
-
+   
 };
 
    
@@ -107,13 +110,15 @@ function obstacleDelete(){
    }
 };
 
+// Detector de colisiones
 
 function isCollide() {
    var bird = $(".bird");
    var ot = $(".obstacle-top");
    var ob = $(".obstacle-bottom");
    var div = $(".obstacle-animated")
-    
+   
+   //Detector de colisiones obstacle-top 
    if( 60 < div.position().left + 90 &&
        60 + bird.width() > div.position().left &&
        bird.position().top < ot.position().top + ot.height() + 30 &&
@@ -122,6 +127,7 @@ function isCollide() {
       console.log("hoorray")
    }     
    
+   //Detector de colisiones obstacle-bottom
    if (60 < div.position().left + 90 &&
    60 + bird.width() > div.position().left &&
    bird.position().top > 388 - ob.height() &&
@@ -130,3 +136,13 @@ function isCollide() {
 }
     
 }
+
+function gameOver(){
+   
+}
+
+//Genera un enemigo Spagueti monster
+function generateEnemy(){
+   $(".bird").after('<div class="monster"></div>')
+}
+

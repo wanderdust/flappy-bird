@@ -18,6 +18,10 @@
     100%{left:-100px;}
 }
 
+@-webkit-keyframes monsterAnimation {
+    0% {background-position: 0px -0px;}
+    100%{background-position:-0px -196px;}
+}
 
 
 body, html {
@@ -156,3 +160,16 @@ body, html {
 	bottom:-1px;
 	background-repeat:no-repeat;
 }
+
+.monster{
+	position:absolute;
+	top:210px;
+	left: 300px;
+	height:49px;
+	width:60px;
+	background-image:url('images/spa-monster.png');
+	background-position: 0px 0px;
+	animation: monsterAnimation 0.6s steps(4) infinite ;
+	z-index: 9999;
+}
+
