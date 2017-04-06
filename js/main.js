@@ -86,7 +86,7 @@ function obstacleGenerator (){
 
    $("#"+j).after("<div class='obstacle-animated' id="+(j+1)+" ><div class='obstacle-top'></div><div class='obstacle-bottom'></div></div>")
 
-   var randomNumber = (Math.floor(Math.random()*(235))+1);
+   var randomNumber = (Math.floor(Math.random()*(196))+35);
    var heightTop = randomNumber;
    var heightBottom = 265-randomNumber;
 
