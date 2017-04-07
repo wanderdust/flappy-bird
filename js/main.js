@@ -78,29 +78,18 @@ function offLimits(){
 //funcion para desactivar animaciones css
 
 function noAnimation (){
-   $("#container-floor").css({"-webkit-animation-play-state": 'paused'});
-   $("#container-sky").css({"-webkit-animation-play-state": 'paused'});
-   $(".obstacle-animated").css({"-webkit-animation-play-state": 'paused'});
-   $(".ceiling").css({"-webkit-animation-play-state": 'paused'});
-   $(".bird").css({"-webkit-animation-play-state": 'paused'})
+   $(".animated").css({"-webkit-animation-play-state": 'paused'});
 };
 
 
 
 // Aqui se crean los nuevos divs de obstaculos de diferentes tamanos
 function obstacleGenerator (){
-   i = j+1;
-
-   $("#"+j).after("<div class='obstacle-animated' id="+(j+1)+" ><div class='obstacle-top'></div><div class='obstacle-bottom'></div></div>")
-
    var randomNumber = (Math.floor(Math.random()*(196))+35);
    var heightTop = randomNumber;
    var heightBottom = 265-randomNumber;
 
-   $("#"+i+" .obstacle-top").css({"height": heightTop + "px"})
-   $("#"+i+" .obstacle-bottom").css({"height": heightBottom + "px"})
-
-   j++;
+   $("#gameplay-area").append("<div class='obstacle-animated animated'><div class='obstacle-top' style='height:"+heightTop+"px;'></div><div class='obstacle-bottom' style='height:"+heightBottom+"px;'></div></div>");
 
 };
 
