@@ -1,24 +1,27 @@
-var gravity = 1; // Constante
-var velocity = 9; // Velocidad. Disminuye por la gravedad.
-var position = 210; // posicion del pajaro
-var fps = 45;
-var velocityY = 0; // Variable para darle nuevos valores a velocidad
-var obstacleCount = 64;
-var fall = 0; // Pasa a ser -1 cuando choca con un obstaculo y así se pone la velocidad a 0 en la funcion jump()
+var enviroment = {
+   gravity: 1,          // Constante
+   fps: 45,             // Numero de veces que se ejecuta el loop por segundo
+   fallCondition: 0,    // Pasa a ser -1 cuando choca con un obstaculo y asi se pone la velocidad a 0 en la funcion jump()
+   obstacleCount: 64    //Variable para el bucle que genera los obstaculos
+}
+
+var bird = {
+   position: 210,    // posicion del pajaro
+   velocity: 9,      // Velocidad y del pajaro
+   velocityReset: 0, // Variable para darle nuevos valores a velocidad
+}
 
 $(document).ready(function() {   
    
-   var gameInterval = setInterval(mainloop, fps);    //Actualiza la posición del pajaro en cada frame
+   var gameInterval = setInterval(mainloop, enviroment.fps);    //Actualiza la posicion del pajaro en cada frame
 });
 
-function mainloop() {
-   var player = $(".bird");
-      
-   velocity -= gravity;
-   position -= velocity; 
+function mainloop() {        
+   bird.velocity -= enviroment.gravity;
+   bird.position -= bird.velocity; 
    
    // Aqui los pasamos el valor de la posicion en cada momento al CSS.
-   player.css({"top": position + "px"}) 
+   $(".bird").css({"top": bird.position + "px"}) 
    
    // Funcion para que el pájaro salte
    jump();
@@ -34,20 +37,16 @@ function mainloop() {
    
    //Detecta cuando bird ha hecho colision
    isCollide();
-
-
    
 };
-
-
 
 // Funcion para saltar. Si toca el suelo deja de funcionar.
    function jump(){
       $(document).on("click", function(){
-         if(position<397 && fall === 0){
-            velocity = velocityY;
-         }else if(position >= 397 && fall === -1){
-            velocityY = -4;
+         if(bird.position<397 && enviroment.fallCondition === 0){
+            bird.velocity = enviroment.velocityReset;
+         }else if(bird.position >= 397 && enviroment.fallCondition === -1){
+            enviroment.velocityReset = -4;
 
          }
       }); 
@@ -57,19 +56,19 @@ function mainloop() {
 function offLimits(){
    //Limites 
       // 1. Limites suelo-Game over 
-   if (position >= 397){
-      gravity = 0; 
-      velocity = 0;
+   if (bird.position >= 397){
+      enviroment.gravity = 0; 
+      bird.velocity = 0;
       noAnimation(); 
-      position=397;
-      obstacleCount = 66;//PARA (stop) el generador de obstáculos
+      bird.position=397;
+      enviroment.obstacleCount = 66;//PARA (stop) el generador de obstáculos
 
       // 2. Limites techo-rebote abajo
-   } else if(position < 35){
-      velocityY = -4;
-      velocity = velocityY;
+   } else if(bird.position < 35){
+      enviroment.velocityReset = -4;
+      bird.velocity = enviroment.velocityReset;
    } else {
-      velocityY = 12;
+      enviroment.velocityReset = 12;
    };
 }
 
@@ -94,10 +93,10 @@ function obstacleGenerator (){
 //Bucle de 0 a 45 que ejecuta la funcion obstacleGenerator cada 45 fps
 
 function obstacleTimer(){
-   obstacleCount++;
-   if (obstacleCount === 65){
+   enviroment.obstacleCount++;
+   if (enviroment.obstacleCount === 65){
       obstacleGenerator();
-      obstacleCount = 0;
+      enviroment.obstacleCount = 0;
 
    }
 }
@@ -144,10 +143,9 @@ function isCollide() {
 // Cuando el pájaro se choca cae al suelo
 function fallDown(){
    noAnimation();
-   fall = -1
-   velocityY = false;
-   obstacleCount = 66; //para que deje de ejecutarse la funcion obstacleGenerator()
-   position += gravity;
+   enviroment.fallCondition = -1
+   enviroment.obstacleCount = 66; //para que deje de ejecutarse la funcion obstacleGenerator()
+   bird.position += enviroment.gravity;
 
 
 }
