@@ -4,8 +4,6 @@ var position = 210; // posicion del pajaro
 var fps = 45;
 var velocityY = 0; // Variable para darle nuevos valores a velocidad
 var obstacleCount = 64;
-var j = -1;
-var i = 0;
 var fall = 0; // Pasa a ser -1 cuando choca con un obstaculo y así se pone la velocidad a 0 en la funcion jump()
 
 $(document).ready(function() {   
