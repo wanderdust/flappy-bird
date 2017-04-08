@@ -174,3 +174,9 @@ body, html {
 	z-index: 9999;
 }
 
+.fireball{
+	position:absolute;
+	width:22px;
+	height:22px;
+	background-color:red;
+}

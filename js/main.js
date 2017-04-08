@@ -1,15 +1,25 @@
 var enviroment = {
    gravity: 1,          // Constante
-   fps: 45,             // Numero de veces que se ejecuta el loop por segundo
+   fps: 45,             // el loop se ejecuta cada 45 ms
    fallCondition: 0,    // Pasa a ser -1 cuando choca con un obstaculo y asi se pone la velocidad a 0 en la funcion jump()
    obstacleCount: 64    //Variable para el bucle que genera los obstaculos
 }
 
 var bird = {
    position: 210,    // posicion del pajaro
-   velocity: 9,      // Velocidad y del pajaro
+   velocityY: 9,     // Velocidad y del pajaro
    velocityReset: 0, // Variable para darle nuevos valores a velocidad
+   fireball: {
+      fireballX: 60,
+      fire: function(){
+            this.fireballX += 7
+            $("#gameplay-area").append("<div class='fireball' style='top:" + bird.position +"px;'></div>")
+            $(".fireball").css({"left": this.fireballX + "px"}) 
+         }
+   },
 }
+
+
 
 $(document).ready(function() {   
    
@@ -17,8 +27,8 @@ $(document).ready(function() {
 });
 
 function mainloop() {        
-   bird.velocity -= enviroment.gravity;
-   bird.position -= bird.velocity; 
+   bird.velocityY -= enviroment.gravity;
+   bird.position -= bird.velocityY; 
    
    // Aqui los pasamos el valor de la posicion en cada momento al CSS.
    $(".bird").css({"top": bird.position + "px"}) 
@@ -37,6 +47,8 @@ function mainloop() {
    
    //Detecta cuando bird ha hecho colision
    isCollide();
+
+   //bird.fireball.fire();
    
 };
 
@@ -44,7 +56,7 @@ function mainloop() {
    function jump(){
       $(document).on("click", function(){
          if(bird.position<397 && enviroment.fallCondition === 0){
-            bird.velocity = enviroment.velocityReset;
+            bird.velocityY = enviroment.velocityReset;
          }else if(bird.position >= 397 && enviroment.fallCondition === -1){
             enviroment.velocityReset = -4;
 
@@ -58,7 +70,7 @@ function offLimits(){
       // 1. Limites suelo-Game over 
    if (bird.position >= 397){
       enviroment.gravity = 0; 
-      bird.velocity = 0;
+      bird.velocityY = 0;
       noAnimation(); 
       bird.position=397;
       enviroment.obstacleCount = 66;//PARA (stop) el generador de obstáculos
@@ -66,7 +78,7 @@ function offLimits(){
       // 2. Limites techo-rebote abajo
    } else if(bird.position < 35){
       enviroment.velocityReset = -4;
-      bird.velocity = enviroment.velocityReset;
+      bird.velocityY = enviroment.velocityReset;
    } else {
       enviroment.velocityReset = 12;
    };
@@ -114,25 +126,20 @@ function obstacleDelete(){
 // Detector de colisiones
 
 function isCollide() {
-   var bird = $(".bird");
-   var ot = $(".obstacle-top");
-   var ob = $(".obstacle-bottom");
-   var div = $(".obstacle-animated")
-   
    //Detector de colisiones obstacle-top 
-   if( 60 < div.position().left + 90 &&
-       60 + bird.width() > div.position().left &&
-       bird.position().top < ot.position().top + ot.height() + 30 &&
-       bird.height() + bird.position().top > 0) {
+   if( 60 < $(".obstacle-animated").position().left + 90 &&
+       60 + $(".bird").width() > $(".obstacle-animated").position().left &&
+       $(".bird").position().top < $(".obstacle-top").position().top + $(".obstacle-top").height() + 30 &&
+       $(".bird").height() + $(".bird").position().top > 0) {
 
       fallDown();
    }     
    
    //Detector de colisiones obstacle-bottom
-   if (60 < div.position().left + 90 &&
-      60 + bird.width() > div.position().left &&
-      bird.position().top > 388 - ob.height() &&
-      bird.height() + bird.position().top < 388) {
+   if (60 < $(".obstacle-animated").position().left + 90 &&
+      60 + $(".bird").width() > $(".obstacle-animated").position().left &&
+      $(".bird").position().top > 388 - $(".obstacle-bottom").height() &&
+      $(".bird").height() + $(".bird").position().top < 388) {
    
       fallDown();
 
