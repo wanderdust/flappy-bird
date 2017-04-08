@@ -2,23 +2,33 @@ var enviroment = {
    gravity: 1,          // Constante
    fps: 45,             // el loop se ejecuta cada 45 ms
    fallCondition: 0,    // Pasa a ser -1 cuando choca con un obstaculo y asi se pone la velocidad a 0 en la funcion jump()
-   obstacleCount: 64    //Variable para el bucle que genera los obstaculos
+   obstacleCount: 64,    //Variable para el bucle que genera los obstaculos
 }
 
 var bird = {
    position: 210,    // posicion del pajaro
    velocityY: 9,     // Velocidad y del pajaro
    velocityReset: 0, // Variable para darle nuevos valores a velocidad
-   fireball: {
-      fireballX: 60,
-      fire: function(){
-            this.fireballX += 7
-            $("#gameplay-area").append("<div class='fireball' style='top:" + bird.position +"px;'></div>")
-            $(".fireball").css({"left": this.fireballX + "px"}) 
-         }
-   },
+   
 }
 
+var fireball = {
+      position: 60,
+      velocityX: 7,
+      /*fire: function(){   //Lanzar bolas de fuego... Sigue en proceso.
+            this.position += velocityX;
+            $("#gameplay-area").append("<div class='fireball' style='top:" + bird.position +"px;'></div>")
+            $(".fireball").css({"left": this.position + "px"}) 
+         }*/
+   }
+
+var monster = {
+   div:'<div class="monster animated"></div>',
+   position:1400,
+   velocityX:-9,
+   unique: 1   //variable para que solo se pueda crear un monstruo a la vez
+
+}
 
 
 $(document).ready(function() {   
@@ -48,7 +58,12 @@ function mainloop() {
    //Detecta cuando bird ha hecho colision
    isCollide();
 
-   //bird.fireball.fire();
+   //fireball.fire();
+
+   monsterCreate();
+
+   monsterDissapear();
+
    
 };
 
@@ -157,8 +172,21 @@ function fallDown(){
 
 }
 
-//Genera un enemigo Spagueti monster
-function generateEnemy(){
-   $(".bird").after('<div class="monster"></div>')
+// Que aparezca un monstruo y se mueva por el mapa.
+function monsterCreate(){
+     if(monster.unique == 1){ //si es 0 retorna false, si es cualquier otro numero retorna true
+         $("#gameplay-area").append(monster.div);
+         monster.unique = 0;
+     } else{ 
+      monster.position += monster.velocityX;
+      $(".monster").css({"left":monster.position+ "px"});
+   }
 }
 
+function monsterDissapear(){
+   if(monster.position < -50){
+         $(".monster").remove();
+         monster.position = 1400;
+         monster.unique = 1;
+      }
+}
