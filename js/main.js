@@ -1,14 +1,14 @@
 var enviroment = {
-   gravity: 1,          // Constante
-   fps: 45,             // el loop se ejecuta cada 45 ms
+   gravity: 0.25,          // Constante
+   fps: 1000/60,             // el loop se ejecuta cada 45 ms
    fallCondition: 0,    // Pasa a ser -1 cuando choca con un obstaculo y asi se pone la velocidad a 0 en la funcion jump()
-   obstacleCount: 64,    //Variable para el bucle que genera los obstaculos
+   obstacleCount: 179,    //Variable para el bucle que genera los obstaculos
 }
 
 var bird = {
    position: 210,    // posicion del pajaro
-   velocityY: 9,     // Velocidad y del pajaro
-   velocityReset: 0, // Variable para darle nuevos valores a velocidad
+   velocityY: 6,     // Velocidad -y del pajaro. No cte.
+   velocityReset: 6, // Es constante. Variable para darle nuevos valores a velocidad
    
 }
 
@@ -25,7 +25,7 @@ var fireball = {
 var monster = {
    div:'<div class="monster animated"></div>',
    position:1400,
-   velocityX:-9,
+   velocityX:-5,
    unique: 1   //variable para que solo se pueda crear un monstruo a la vez
 
 }
@@ -73,7 +73,7 @@ function mainloop() {
          if(bird.position<397 && enviroment.fallCondition === 0){
             bird.velocityY = enviroment.velocityReset;
          }else if(bird.position >= 397 && enviroment.fallCondition === -1){
-            enviroment.velocityReset = -4;
+            enviroment.velocityY = -4;
 
          }
       }); 
@@ -88,14 +88,14 @@ function offLimits(){
       bird.velocityY = 0;
       noAnimation(); 
       bird.position=397;
-      enviroment.obstacleCount = 66;//PARA (stop) el generador de obstáculos
+      enviroment.obstacleCount = 181;//PARA (stop) el generador de obstáculos
 
       // 2. Limites techo-rebote abajo
    } else if(bird.position < 35){
-      enviroment.velocityReset = -4;
+      enviroment.velocityReset = -enviroment.gravity;
       bird.velocityY = enviroment.velocityReset;
    } else {
-      enviroment.velocityReset = 12;
+      enviroment.velocityReset = 7.2;
    };
 }
 
@@ -121,7 +121,7 @@ function obstacleGenerator (){
 
 function obstacleTimer(){
    enviroment.obstacleCount++;
-   if (enviroment.obstacleCount === 65){
+   if (enviroment.obstacleCount === 180){
       obstacleGenerator();
       enviroment.obstacleCount = 0;
 
@@ -166,7 +166,7 @@ function isCollide() {
 function fallDown(){
    noAnimation();
    enviroment.fallCondition = -1
-   enviroment.obstacleCount = 66; //para que deje de ejecutarse la funcion obstacleGenerator()
+   enviroment.obstacleCount = 181; //para que deje de ejecutarse la funcion obstacleGenerator()
    bird.position += enviroment.gravity;
 
 
