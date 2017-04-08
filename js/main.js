@@ -1,8 +1,12 @@
 var enviroment = {
    gravity: 0.25,          // Constante
-   fps: 1000/60,             // el loop se ejecuta cada 45 ms
+   fps: 1000/60,             // el loop se ejecuta 60fps 
    fallCondition: 0,    // Pasa a ser -1 cuando choca con un obstaculo y asi se pone la velocidad a 0 en la funcion jump()
    obstacleCount: 179,    //Variable para el bucle que genera los obstaculos
+   obstacleCountStop: function(){return this.obstacleCount = 181},
+   animationStop: function(){
+      $(".animated").css({"-webkit-animation-play-state": 'paused'})    //funcion para desactivar animaciones css
+   },
 }
 
 var bird = {
@@ -12,21 +16,14 @@ var bird = {
    
 }
 
-var fireball = {
-      position: 60,
-      velocityX: 7,
-      /*fire: function(){   //Lanzar bolas de fuego... Sigue en proceso.
-            this.position += velocityX;
-            $("#gameplay-area").append("<div class='fireball' style='top:" + bird.position +"px;'></div>")
-            $(".fireball").css({"left": this.position + "px"}) 
-         }*/
-   }
-
 var monster = {
    div:'<div class="monster animated"></div>',
-   position:1400,
+   positionX:1400,
    velocityX:-5,
-   unique: 1   //variable para que solo se pueda crear un monstruo a la vez
+   unique: 1,   //variable para que solo se pueda crear un monstruo a la vez
+   stop: function(){
+      return this.velocityX = 0;
+   }
 
 }
 
@@ -86,9 +83,10 @@ function offLimits(){
    if (bird.position >= 397){
       enviroment.gravity = 0; 
       bird.velocityY = 0;
-      noAnimation(); 
+      enviroment.animationStop(); 
       bird.position=397;
-      enviroment.obstacleCount = 181;//PARA (stop) el generador de obstáculos
+      enviroment.obstacleCountStop()   //PARA (stop) el generador de obstáculos
+      monster.stop();
 
       // 2. Limites techo-rebote abajo
    } else if(bird.position < 35){
@@ -98,13 +96,6 @@ function offLimits(){
       enviroment.velocityReset = 7.2;
    };
 }
-
-//funcion para desactivar animaciones css
-
-function noAnimation (){
-   $(".animated").css({"-webkit-animation-play-state": 'paused'});
-};
-
 
 
 // Aqui se crean los nuevos divs de obstaculos de diferentes tamanos
@@ -164,9 +155,9 @@ function isCollide() {
 
 // Cuando el pájaro se choca cae al suelo
 function fallDown(){
-   noAnimation();
+   enviroment.animationStop();
    enviroment.fallCondition = -1
-   enviroment.obstacleCount = 181; //para que deje de ejecutarse la funcion obstacleGenerator()
+   enviroment.obstacleCountStop(); //para que deje de ejecutarse la funcion obstacleGenerator()
    bird.position += enviroment.gravity;
 
 
@@ -178,15 +169,15 @@ function monsterCreate(){
          $("#gameplay-area").append(monster.div);
          monster.unique = 0;
      } else{ 
-      monster.position += monster.velocityX;
-      $(".monster").css({"left":monster.position+ "px"});
+      monster.positionX += monster.velocityX;
+      $(".monster").css({"left":monster.positionX+ "px"});
    }
 }
 
 function monsterDissapear(){
-   if(monster.position < -50){
+   if(monster.positionX < -50){
          $(".monster").remove();
-         monster.position = 1400;
+         monster.positionX = 1400;
          monster.unique = 1;
       }
 }

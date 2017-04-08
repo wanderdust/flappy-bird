@@ -50,7 +50,7 @@ body, html {
 	background-repeat: repeat-x;
 	background-color:#6FBCCC;
 	-webkit-animation-name: movebackgroundSky ;
-	-webkit-animation-duration: 10s;
+	-webkit-animation-duration: 7.155s;
 	-webkit-animation-timing-function: linear;
 	-webkit-animation-iteration-count: infinite;
 	overflow:hidden;	
@@ -66,7 +66,7 @@ body, html {
 	background-repeat: repeat-x;
 	background-color:#ded895;
 	-webkit-animation-name: movebackgroundEarth ;
-	-webkit-animation-duration: 10s;
+	-webkit-animation-duration: 7.155s;
 	-webkit-animation-timing-function: linear;
 	-webkit-animation-iteration-count: infinite;
 
@@ -99,7 +99,7 @@ body, html {
 	height:32px;
 	background-image: url(images/ceiling.png);
 	-webkit-animation-name: movebackgroundEarth ;
-	-webkit-animation-duration: 10s;
+	-webkit-animation-duration: 7.155s;
 	-webkit-animation-timing-function: linear;
 	-webkit-animation-iteration-count: infinite;
 }
@@ -111,7 +111,7 @@ body, html {
 	width:90px;
 	height:388px;
 	-webkit-animation-name: obstacleAnimation;
-	-webkit-animation-duration: 11.225s;
+	-webkit-animation-duration: 8s;
 	-webkit-animation-timing-function: linear;
 	-webkit-animation-iteration-count: infinite;
 
@@ -165,7 +165,7 @@ body, html {
 .monster{
 	position:absolute;
 	top:210px;
-	left: 300px;
+	left: 1800px;
 	height:49px;
 	width:60px;
 	background-image:url('images/spa-monster.png');
