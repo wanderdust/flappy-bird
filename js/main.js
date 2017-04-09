@@ -21,6 +21,7 @@ var bird = {
    
 }
 
+
 var monster = {
    width: 60,
    height: 49,
@@ -140,39 +141,38 @@ function obstacleDelete(){
    }
 };
 
+function collisionDetector(obj1, obj2){
+   if (obj1.positionX < obj2.positionX + obj2.width &&
+      obj1.positionX + obj1.width > obj2.positionX &&
+      obj1.positionY < obj2.positionY + obj2.height &&
+      obj1.height + obj1.positionY > obj2.positionY) {
+         fallDown();
+         monster.stop();
+   }
+}
+
 // Detector de colisiones
 
 function isCollide() {
    //Detector de colisiones obstacle-top 
-   if( 60 < $(".obstacle-animated").position().left + 90 &&
-       60 + $(".bird").width() > $(".obstacle-animated").position().left &&
-       $(".bird").position().top < $(".obstacle-top").position().top + $(".obstacle-top").height() + 30 &&
-       $(".bird").height() + $(".bird").position().top > 0) {
-
-      fallDown();
-      monster.stop();
-
+   if( bird.positionX < $(".obstacle-animated").position().left + 90 &&
+       bird.positionX + bird.width > $(".obstacle-animated").position().left &&
+       bird.positionY < $(".obstacle-top").position().top + $(".obstacle-top").height() + 30 &&
+      bird.height +bird.positionY > 0) {
+         fallDown();
+         monster.stop();
    }     
    
    //Detector de colisiones obstacle-bottom
-   if (60 < $(".obstacle-animated").position().left + 90 &&
-      60 + $(".bird").width() > $(".obstacle-animated").position().left &&
-      $(".bird").position().top > 388 - $(".obstacle-bottom").height() &&
-      $(".bird").height() + $(".bird").position().top < 388) {
-   
-      fallDown();
-      monster.stop();
-
-   }
-    
-     if (bird.positionX < monster.positionX + monster.width &&
-      bird.positionX + bird.width > monster.positionX &&
-      bird.positionY < monster.positionY + monster.height &&
-      bird.height + bird.positionY > monster.positionY ) {
+   if (bird.positionX < $(".obstacle-animated").position().left + 90 &&
+      bird.positionX + bird.width > $(".obstacle-animated").position().left &&
+      bird.positionY > 388 - $(".obstacle-bottom").height() &&
+      bird.height + bird.positionY < 388) {  
          fallDown();
          monster.stop();
    }
- 
+    
+     collisionDetector(bird, monster);
   
 }
 
@@ -205,4 +205,6 @@ function monsterDissapear(){
          monster.unique = 1;
       }
 }
+
+
 
