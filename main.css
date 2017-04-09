@@ -23,6 +23,11 @@
     100%{background-position:-0px -196px;}
 }
 
+@-webkit-keyframes bananaAnimation {
+    0% {background-position: 0px -0px;}
+    100%{background-position:-0px -80px;}
+}
+
 
 body, html {
 	height:100%;
@@ -174,9 +179,13 @@ body, html {
 	z-index: 9999;
 }
 
-.fireball{
+.banana{
 	position:absolute;
-	width:22px;
-	height:22px;
-	background-color:red;
+	top: 200px;
+	left:100px;
+	width:20px;
+	height:20px;
+	background-image:url(images/banana.png);
+	animation: bananaAnimation 0.6s steps(4) infinite;
+	z-index: 9998;
 }

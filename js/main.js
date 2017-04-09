@@ -15,10 +15,7 @@ var bird = {
    positionX: 60,      //Posicion X del pájaro
    positionY: 210,     // guarda la posicion del pajaro en cada frame
    velocityY: 6,       // Velocidad -y del pajaro. No cte.
-   velocityReset: 6,    // Es constante. Variable para darle nuevos valores a velocidad
-   
-
-   
+   velocityReset: 6    // Es constante. Variable para darle nuevos valores a velocidad   
 }
 
 
@@ -39,6 +36,23 @@ var monster = {
 
 }
 
+
+var banana = {
+   height: 20,
+   width: 20,
+   positionX:1400,
+   positionY:0,
+   velocityX: -3,
+   unique: 1,
+   move: function(){    
+      this.positionX += this.velocityX;
+      $(".banana").css({"left":this.positionX+ "px"});     
+   },  
+
+   remove: function(){
+      $(".banana").remove();
+   }     
+}
 
 
 $(document).ready(function() {   
@@ -71,6 +85,8 @@ function mainloop() {
    monsterCreate();
 
    monsterDissapear();
+
+   addBanana();
    
    
 };
@@ -141,13 +157,13 @@ function obstacleDelete(){
    }
 };
 
-function collisionDetector(obj1, obj2){
+function collisionDetector(obj1, obj2, func1, func2){
    if (obj1.positionX < obj2.positionX + obj2.width &&
       obj1.positionX + obj1.width > obj2.positionX &&
       obj1.positionY < obj2.positionY + obj2.height &&
       obj1.height + obj1.positionY > obj2.positionY) {
-         fallDown();
-         monster.stop();
+         func1();
+         func2();
    }
 }
 
@@ -172,7 +188,9 @@ function isCollide() {
          monster.stop();
    }
     
-     collisionDetector(bird, monster);
+     collisionDetector(bird, monster, fallDown, monster.stop);
+
+     collisionDetector(bird, banana, banana.remove);
   
 }
 
@@ -207,4 +225,16 @@ function monsterDissapear(){
 }
 
 
+
+function addBanana(){
+    if(banana.unique == 1){ //si es 0 retorna false, si es cualquier otro numero retorna true
+         banana.positionY = Math.random()*(322)+49
+         $("#gameplay-area").append('<div class="banana animated" style="top:'+ banana.positionY +'px"></div>');
+         banana.unique = 0;
+     } else{ 
+      banana.move();
+      
+   }
+
+}
 
