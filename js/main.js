@@ -100,9 +100,9 @@ function offLimits(){
 
 // Aqui se crean los nuevos divs de obstaculos de diferentes tamanos
 function obstacleGenerator (){
-   var randomNumber = (Math.floor(Math.random()*(196))+35);
+   var randomNumber = (Math.floor(Math.random()*(165))+35);
    var heightTop = randomNumber;
-   var heightBottom = 265-randomNumber;
+   var heightBottom = 235-randomNumber;
 
    $("#gameplay-area").append("<div class='obstacle-animated animated'><div class='obstacle-top' style='height:"+heightTop+"px;'></div><div class='obstacle-bottom' style='height:"+heightBottom+"px;'></div></div>");
 
