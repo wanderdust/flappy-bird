@@ -15,7 +15,7 @@ var bird = {
    positionX: 60,      //Posicion X del pájaro
    positionY: 210,     // guarda la posicion del pajaro en cada frame
    velocityY: 6,       // Velocidad -y del pajaro. No cte.
-   velocityReset: 6    // Es constante. Variable para darle nuevos valores a velocidad   
+   velocityReset: 7.2    // Es constante. Variable para resetear la velocidad a 6  
 }
 
 
@@ -98,10 +98,7 @@ function mainloop() {
    function jump(){
       $(document).on("click", function(){
          if(bird.positionY<397 && environment.fallCondition === 0){
-            bird.velocityY = environment.velocityReset;
-         }else if(bird.positionY >= 397 && environment.fallCondition === -1){
-            environment.velocityY = -4;
-
+            bird.velocityY = bird.velocityReset;
          }
       }); 
    }
@@ -112,19 +109,15 @@ function offLimits(){
       // 1. Limites suelo-Game over 
    if (bird.positionY >= 397){
       environment.gravity = 0; 
-      bird.velocityY = 0;
-      
-      bird.positionY=397;
-      
+      bird.velocityY = 0;     
+      bird.positionY=397;    
       gameOver();
-      
-
       // 2. Limites techo-rebote abajo
    } else if(bird.positionY < 35){
-      environment.velocityReset = -environment.gravity;
-      bird.velocityY = environment.velocityReset;
-   } else {environment
-      environment.velocityReset = 7.2;
+      bird.velocityReset = -environment.gravity;
+      bird.velocityY = bird.velocityReset;
+   } else {
+      bird.velocityReset = 7.2;
    };
 }
 
@@ -165,7 +158,6 @@ function fallDown(){
    environment.animationStop();
    environment.fallCondition = -1
    environment.obstacleCountStop(); //para que deje de ejecutarse la funcion obstacleGenerator()
-   bird.positionY += environment.gravity;
 }
 
 
@@ -243,12 +235,3 @@ function removeObject(obj, className){
          obj.unique = 1;
       }
 }
-
-/*function randomGenerator(obj){
-   var random = Math.random();
-   if(random<0.09 && obj.unique == 0){
-      obj.unique = 1;
-
-   }else{obj.unique = 0}
-
-}*/
