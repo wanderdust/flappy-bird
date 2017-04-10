@@ -90,10 +90,6 @@ function mainloop() {
    addObject(monster, "monster");
    addObject(banana, "banana");
 
-   //Elimina los elementos que se salen de la pantalla
-   removeObject(monster, "monster");
-   removeObject(banana, "banana");
-
    
    
 };
@@ -199,7 +195,7 @@ function isCollide() { //No puedo refactorizar las 2 primeras porque la posicion
    //Detector de colisiones obstacle-top 
    if( bird.positionX < $(".obstacle-animated").position().left + 90 &&
        bird.positionX + bird.width > $(".obstacle-animated").position().left &&
-       bird.positionY < $(".obstacle-top").position().top + $(".obstacle-top").height() + 30 &&
+       bird.positionY < $(".obstacle-top").position().top + $(".obstacle-top").height() + 32 &&
       bird.height +bird.positionY > 0) {
          gameOver();
    }     
@@ -231,6 +227,9 @@ function addObject(obj, className){
          obj.unique = 0;
      } else{ 
       obj.move();
+       //Elimina los elementos que se salen de la pantalla
+      removeObject(monster, "monster");
+      removeObject(banana, "banana");
       
    }
 
@@ -244,3 +243,12 @@ function removeObject(obj, className){
          obj.unique = 1;
       }
 }
+
+/*function randomGenerator(obj){
+   var random = Math.random();
+   if(random<0.09 && obj.unique == 0){
+      obj.unique = 1;
+
+   }else{obj.unique = 0}
+
+}*/
