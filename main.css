@@ -182,10 +182,10 @@ body, html {
 .banana{
 	position:absolute;
 	top: 200px;
-	left:100px;
+	left:1800px;
 	width:20px;
 	height:20px;
 	background-image:url(images/banana.png);
-	animation: bananaAnimation 0.6s steps(4) infinite;
+	animation: bananaAnimation 1s steps(4) infinite;
 	z-index: 9998;
 }
