@@ -54,12 +54,26 @@ var banana = {
    },                                   // Actualiza positionX en cada frame
    remove: function(){
       $(".banana").remove();
+      inmune.have = true;
+      inmune.time = 300;
    },                                     //Elimina el objeto DOM de banana
    stop: function(){
       return this.velocityX = 0;
    }                                       // Pone a 0 velocityX, para que el monstruo deje de avanzar                               
 };
 
+
+var inmune = {
+   have: false,
+   time: 300,          
+   duration: function(){
+      this.time--;
+      console.log(this.time)
+      if (this.time === 0 && this.have === true){
+         this.have = false;
+      }
+   }
+};
 
 $(document).ready(function() {   
    
@@ -99,6 +113,8 @@ function mainloop() {
    //Los crea aleatoriamente
    bananaRandom();
    monsterRandom();
+
+   invencibility();
    
 };
 
@@ -177,12 +193,12 @@ function gameOver(){
 };
 
 //funcion para las colisiones
-function collisionDetector(obj1, obj2, func){
+function collisionDetector(obj1, obj2, fn){
    if (obj1.positionX < obj2.positionX + obj2.width &&
       obj1.positionX + obj1.width > obj2.positionX &&
       obj1.positionY < obj2.positionY + obj2.height &&
       obj1.height + obj1.positionY > obj2.positionY) {
-         func(); //Realizar alguna accion
+         fn(); //Realizar alguna accion
          
    }
 };
@@ -204,7 +220,7 @@ function isCollide() { //No puedo refactorizar las 2 primeras porque la posicion
          gameOver();
    }    
    collisionDetector(bird, monster, gameOver);
-   collisionDetector(bird, banana, banana.remove); 
+   collisionDetector(bird, banana,  banana.remove);
 };
 
 // Que aparezca un platano o monstruo en el mapa
@@ -236,7 +252,7 @@ function removeItem(obj, className){
 //Ejecuta la funcion addItem cuando se da la condicion
 function bananaRandom(){
    var random = Math.random()
-   if(banana.unique === 1 && environment.obstacleCount == 10 && random > 0.75){
+   if(banana.unique === 1 && environment.obstacleCount == 10 && random > 0.00){
       addItem(banana, "banana");
    }
 };
@@ -248,3 +264,10 @@ function monsterRandom(){
       addItem(monster, "monster");
    }
 };
+
+
+function invencibility(){
+  if(inmune.have === true){
+      inmune.duration();
+  }
+}
