@@ -43,7 +43,9 @@ var banana = {
    width: 20,
    positionX:1400,     //Guarda la posicion -X de banana en cada frame. 1400px es la inicial.
    positionY: 0,        //guarda la posicion aleatoria -Y generada por positionYGenerator
-   positionYGenerator:function(){return Math.random()*(322)+49;},    //Genera un numero aleatorio de posicion -Y que mas adelante se guarda en positionY
+   positionYGenerator:function(){
+      return $(".obstacle-bottom:last").position().top - 60;
+   },                      //Genera una posicion entre obstacle top y obstacle bottom
    velocityX: -3,       //número de px que avanza en cada frame
    unique: 1,           //variable para que solo se pueda crear un monstruo a la vez
    move: function(){    
@@ -87,8 +89,8 @@ function mainloop() {
    isCollide();
 
    //Crea elementos en el juego
-   addObject(monster, "monster");
-   addObject(banana, "banana");
+   //addObject(monster, "monster");
+   //addObject(banana, "banana");
 
    //Hace que el objeto avance
    moveObject(banana);
@@ -97,6 +99,8 @@ function mainloop() {
    //Elimina los objetos que se salen del mapa
    removeObject(monster, "monster");
    removeObject(banana, "banana");
+
+   bananaRandom();
    
 };
 
@@ -242,4 +246,10 @@ function removeObject(obj, className){
          obj.positionX = 1400;
          obj.unique = 1;
       }
+}
+
+function bananaRandom(){
+   if(banana.unique === 1 && environment.obstacleCount == 10){
+      addObject(banana, "banana");
+   }
 }
