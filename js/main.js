@@ -5,7 +5,14 @@ var environment = {
    obstacleCount: 179,    //Variable para el bucle que genera los obstaculos
    obstacleCountStop: function(){return this.obstacleCount = 181},
    animationStop: function(){
-      $(".animated").css({"-webkit-animation-play-state": 'paused'})    //funcion para desactivar animaciones css
+      $(".animated").css({"-webkit-animation-play-state": 'paused'});    //funcion para desactivar animaciones css
+      $(".animated").css({"-moz-animation-play-state": 'paused'});
+      $(".animated").css({"-o-animation-play-state": 'paused'});
+   },
+   animationStart: function(){
+      $(".animated").css({"-webkit-animation-play-state": 'running'});    //funcion para desactivar animaciones css
+      $(".animated").css({"-moz-animation-play-state": 'running'});
+      $(".animated").css({"-o-animation-play-state": 'running'});
    }
 };
 

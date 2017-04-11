@@ -108,10 +108,13 @@ body, html {
 	background-position: bottom;
 	background-repeat: repeat-x;
 	background-color:#6FBCCC;
-	-webkit-animation-name: movebackgroundSky ;
+	-webkit-animation: movebackgroundSky 7.155s linear infinite;
+	-moz-animation: movebackgroundSky 7.155s linear infinite;
+	-o-animation: movebackgroundSky 7.155s linear infinite;
+	/*-webkit-animation-name: movebackgroundSky ;
 	-webkit-animation-duration: 7.155s;
 	-webkit-animation-timing-function: linear;
-	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-iteration-count: infinite;*/
 	overflow:hidden;	
 
 }
@@ -124,10 +127,13 @@ body, html {
 	background-image: url(images/land.png);
 	background-repeat: repeat-x;
 	background-color:#ded895;
-	-webkit-animation-name: movebackgroundEarth ;
+	-webkit-animation: movebackgroundEarth 7.155s linear infinite;
+	-moz-animation: movebackgroundEarth 7.155s linear infinite;
+	-o-animation: movebackgroundEarth 7.155s linear infinite;
+	/*-webkit-animation-name: movebackgroundEarth ;
 	-webkit-animation-duration: 7.155s;
 	-webkit-animation-timing-function: linear;
-	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-iteration-count: infinite;*/
 	z-index:0;
 
 	
@@ -158,10 +164,13 @@ body, html {
 	width:100%;
 	height:32px;
 	background-image: url(images/ceiling.png);
-	-webkit-animation-name: movebackgroundEarth ;
+	-webkit-animation: movebackgroundEarth 7.155s linear infinite;
+	-moz-animation: movebackgroundEarth 7.155s linear infinite;
+	-o-animation: movebackgroundEarth 7.155s linear infinite;
+	/*-webkit-animation-name: movebackgroundEarth ;
 	-webkit-animation-duration: 7.155s;
 	-webkit-animation-timing-function: linear;
-	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-iteration-count: infinite;*/
 }
 
 .obstacle-animated{
@@ -170,10 +179,13 @@ body, html {
 	bottom:0;
 	width:90px;
 	height:420px;
-	-webkit-animation-name: obstacleAnimation;
+	-webkit-animation: obstacleAnimation 8s linear infinite;
+	-moz-animation: obstacleAnimation 8s linear infinite;
+	-o-animation: obstacleAnimation 8s linear infinite;
+	/*-webkit-animation-name: obstacleAnimation;
 	-webkit-animation-duration: 8s;
 	-webkit-animation-timing-function: linear;
-	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-iteration-count: infinite;*/
 
 }
 
@@ -230,8 +242,11 @@ body, html {
 	width:60px;
 	background-image:url('images/spa-monster.png');
 	background-position: 0px 0px;
-	animation: monsterAnimation 0.6s steps(4) infinite ;
 	z-index: 9999;
+	-webkit-animation: monsterAnimation 0.6s steps(4) infinite ;
+	-moz-animation: monsterAnimation 0.6s steps(4) infinite ;
+	-o-animation: monsterAnimation 0.6s steps(4) infinite ;
+	
 }
 
 .banana{
@@ -241,8 +256,11 @@ body, html {
 	width:20px;
 	height:20px;
 	background-image:url(images/banana.png);
-	animation: bananaAnimation 1s steps(4) infinite;
 	z-index: 9998;
+	-webkit-animation: bananaAnimation 1s steps(4) infinite;
+	-moz-animation: bananaAnimation 1s steps(4) infinite;
+	-o-animation: bananaAnimation 1s steps(4) infinite;
+	
 }
 
 #score{
@@ -254,9 +272,9 @@ body, html {
 	z-index:9999;
 	-moz-user-select: none;
 	-webkit-user-select: none;
+	-o-user-select:none;
 	-ms-user-select:none;
 	user-select:none;
-	-o-user-select:none
 
 }
 

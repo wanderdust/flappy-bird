@@ -24,4 +24,3 @@ var score = {
    tripleScore: false,
    
 };
-
