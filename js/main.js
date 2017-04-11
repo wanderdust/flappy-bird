@@ -90,7 +90,13 @@ function mainloop() {
    addObject(monster, "monster");
    addObject(banana, "banana");
 
-   
+   //Hace que el objeto avance
+   moveObject(banana);
+   moveObject(monster);
+
+   //Elimina los objetos que se salen del mapa
+   removeObject(monster, "monster");
+   removeObject(banana, "banana");
    
 };
 
@@ -214,20 +220,22 @@ function addObject(obj, className){
     if(obj.unique == 1){ //si es 0 retorna false, si es cualquier otro numero retorna true
          var x = obj.positionYGenerator();
          obj.positionY = x;
-
          $("#gameplay-area").append("<div class='"+className+" animated' style='top:"+ obj.positionY +"px'></div>");
          obj.unique = 0;
-     } else{ 
-      obj.move();
-       //Elimina los elementos que se salen de la pantalla
-      removeObject(monster, "monster");
-      removeObject(banana, "banana");
-      
-   }
-
+     } 
 }
 
+// Que el platano o monstruo se mueva
+
+function moveObject(obj){
+   if(obj.unique !== 1){
+      obj.move();
+   }
+}
+
+
 // Elimina los objetos que se han salido del mapa
+
 function removeObject(obj, className){
    if(obj.positionX < -50){
          $("."+className).remove();
