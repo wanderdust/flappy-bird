@@ -226,7 +226,7 @@ function isCollide() { //No puedo refactorizar las 2 primeras porque la posicion
       bird.height + bird.positionY < 388) {  
          gameOver();
    }    
-   collisionDetector(bird, monster, gameOver);
+   collisionDetector(bird, monster, monsterDie);
    collisionDetector(bird, banana,  banana.remove);
 };
 
@@ -267,7 +267,7 @@ function bananaRandom(){
 //Ejecuta la funcion addItem cuando se da la condicion
 function monsterRandom(){
    var random = Math.random()
-   if(monster.unique === 1 && random > 0.998){
+   if(monster.unique === 1 && random > 0.0){
       addItem(monster, "monster");
    }
 };
@@ -277,4 +277,10 @@ function invencibility(){
   if(inmune.have === true){
       inmune.duration();
   }
+}
+
+function monsterDie(){
+   if(inmune.have === true){
+      monster.remove()
+   }else {gameOver()}
 }
