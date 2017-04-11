@@ -62,14 +62,17 @@ var banana = {
       this.positionX += this.velocityX;
       $(".banana").css({"left":this.positionX+ "px"});     
    },                                   // Actualiza positionX en cada frame
-   remove: function(){
+   grab: function(){
       $(".banana").remove();
       inmune.have = true;
       inmune.time = 300;
    },                                     //Elimina el objeto DOM de banana
    stop: function(){
       return this.velocityX = 0;
-   }                                       // Pone a 0 velocityX, para que el monstruo deje de avanzar                               
+   },                                       // Pone a 0 velocityX, para que el monstruo deje de avanzar   
+   remove: function(){
+       $(".banana").remove();
+   }                           
 };
 
 
@@ -203,6 +206,7 @@ function gameOver(){
       banana.stop();
       environment.animationStop(); 
       environment.obstacleCountStop()   //PARA (stop) el generador de obstáculos
+      banana.remove();
    }else if (inmune.have === true && bird.positionY >= 397){ //Si inmune.have es true pero tocas el suelo GAME OVER
       inmune.have = false;
    }
@@ -236,7 +240,7 @@ function isCollide() { //No puedo refactorizar las 2 primeras porque la posicion
          gameOver();
    }    
    collisionDetector(bird, monster, monsterDie);
-   collisionDetector(bird, banana,  banana.remove);
+   collisionDetector(bird, banana,  banana.grab);
 };
 
 // Que aparezca un platano o monstruo en el mapa
