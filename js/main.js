@@ -188,11 +188,15 @@ function fallDown(){
 
 //Para todo el juego
 function gameOver(){
-   fallDown();
-   monster.stop();
-   banana.stop();
-   environment.animationStop(); 
-   environment.obstacleCountStop()   //PARA (stop) el generador de obstáculos
+   if(inmune.have !== true){ //Si inmune.have es true se desactivan las colisiones
+      fallDown();
+      monster.stop();
+      banana.stop();
+      environment.animationStop(); 
+      environment.obstacleCountStop()   //PARA (stop) el generador de obstáculos
+   }else if (inmune.have === true && bird.positionY >= 397){ //Si inmune.have es true pero tocas el suelo GAME OVER
+      inmune.have = false;
+   }
 };
 
 //funcion para las colisiones
