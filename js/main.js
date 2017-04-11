@@ -129,9 +129,6 @@ function mainloop() {
 
    score.increase(); 
    score.doubleScore();
-
-   console.log(score.amount);
-  
 };
 
 // Funcion para saltar. Si toca el suelo deja de funcionar.
@@ -169,7 +166,6 @@ function obstacleGenerator (){
    var heightTop = randomNumber;
    var heightBottom = 235-randomNumber;
    $("#gameplay-area").append("<div class='obstacle-animated animated obs-speed'><div class='obstacle-top' style='height:" + heightTop + "px;'></div><div class='obstacle-bottom' style='height:" + heightBottom + "px;'></div></div>");
-
 };
 
 //Bucle de 0 a 45 que ejecuta la funcion obstacleGenerator

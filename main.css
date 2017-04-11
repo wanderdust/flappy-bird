@@ -1,3 +1,8 @@
+@font-face{
+	font-family: 'ARCADECLASSIC';
+	src: url('images/fonts/ARCADECLASSIC.TTF');
+}
+
 @-webkit-keyframes movebackgroundSky {
     0% {background-position: 0px bottom;}
     100% {background-position:-552px bottom;}
@@ -27,7 +32,6 @@
     0% {background-position: 0px -0px;}
     100%{background-position:-0px -80px;}
 }
-
 
 body, html {
 	height:100%;
@@ -194,18 +198,22 @@ body, html {
 #score{
 	position:absolute;
 	min-height:30px;
-	min-width:80px;
+	min-width:350px;
 	top:-50px;
-	right:30px;
+	right:2%;
 	z-index:9999;
 	-moz-user-select: none;
 	-webkit-user-select: none;
 	-ms-user-select:none;
 	user-select:none;
 	-o-user-select:none
+
 }
 
 #score p{
+	position:absolute;
+	text-align:left;
+	font-family: 'ARCADECLASSIC';
 	font-size:3em;
 	margin:0;
 }

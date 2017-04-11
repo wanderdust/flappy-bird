@@ -15,10 +15,10 @@ var score = {
    		this.amount = 0.2
    	}else if(inmune.have === true && this.tripleScore === true){
    		this.amount = 0.6;
-   		$("#points").append("<span> x3<span>")
+   		$("#points").append('<span class="multiply"> x3<span>')
    	}else if (inmune.have === true){
    		this.amount = 0.4;
-   		$("#points").append("<span> x2<span>")
+   		$("#points").append('<span class="multiply"> x2<span>')
    	}
    },
    tripleScore: false,
