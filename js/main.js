@@ -89,7 +89,7 @@ function mainloop() {
    //isCollide();
 
    //Crea elementos en el juego
-   addObject(monster, "monster");
+   //addObject(monster, "monster");
   
 
    //Hace que el objeto avance
@@ -101,6 +101,7 @@ function mainloop() {
    removeObject(banana, "banana");
 
    bananaRandom();
+   monsterRandom();
    
 };
 
@@ -253,5 +254,14 @@ function bananaRandom(){
 
    if(banana.unique === 1 && environment.obstacleCount == 10 && random > 0.75){
       addObject(banana, "banana");
+   }
+}
+
+
+function monsterRandom(){
+   var random = Math.random()
+
+   if(monster.unique === 1 && random > 0.998){
+      addObject(monster, "monster");
    }
 }
