@@ -7,7 +7,7 @@ var environment = {
    animationStop: function(){
       $(".animated").css({"-webkit-animation-play-state": 'paused'})    //funcion para desactivar animaciones css
    },
-}
+};
 
 var bird = {
    width: 34,           
@@ -15,8 +15,8 @@ var bird = {
    positionX: 60,      //Posicion X del pájaro
    positionY: 210,     // guarda la posicion del pajaro en cada frame
    velocityY: 6,       // Velocidad -y del pajaro. No cte.
-   velocityReset: 7.2    // Es constante. Variable para resetear la velocidad a 6  
-}
+   velocityReset: 7.2    // Variable para resetear la velocidad  
+};
 
 
 var monster = {
@@ -35,7 +35,7 @@ var monster = {
       return this.velocityX = 0;
    }                                  // Pone a 0 velocityX, para que el monstruo deje de avanzar
 
-}
+};
 
 
 var banana = {
@@ -44,7 +44,7 @@ var banana = {
    positionX:1400,     //Guarda la posicion -X de banana en cada frame. 1400px es la inicial.
    positionY: 0,        //guarda la posicion aleatoria -Y generada por positionYGenerator
    positionYGenerator:function(){
-      return $(".obstacle-bottom:last").position().top - 60;
+      return $(".obstacle-bottom:last").position().top - 90;
    },                      //Genera una posicion entre obstacle top y obstacle bottom
    velocityX: -3,       //número de px que avanza en cada frame
    unique: 1,           //variable para que solo se pueda crear un monstruo a la vez
@@ -58,7 +58,7 @@ var banana = {
    stop: function(){
       return this.velocityX = 0;
    }                                       // Pone a 0 velocityX, para que el monstruo deje de avanzar                               
-}
+};
 
 
 $(document).ready(function() {   
@@ -109,7 +109,7 @@ function mainloop() {
             bird.velocityY = bird.velocityReset;
          }
       }); 
-   }
+   };
 
 // Establece los limites en el mapa
 function offLimits(){
@@ -124,10 +124,11 @@ function offLimits(){
    } else if(bird.positionY < 35){
       bird.velocityReset = -environment.gravity;
       bird.velocityY = bird.velocityReset;
+      // 3. Mientras este en dentro de los limites
    } else {
       bird.velocityReset = 7.2;
    };
-}
+};
 
 
 // Aqui se crean los nuevos divs de obstaculos de diferentes tamanos
@@ -135,13 +136,11 @@ function obstacleGenerator (){
    var randomNumber = (Math.floor(Math.random()*(165))+35);
    var heightTop = randomNumber;
    var heightBottom = 235-randomNumber;
-
-   $("#gameplay-area").append("<div class='obstacle-animated animated'><div class='obstacle-top' style='height:"+heightTop+"px;'></div><div class='obstacle-bottom' style='height:"+heightBottom+"px;'></div></div>");
+   $("#gameplay-area").append("<div class='obstacle-animated animated'><div class='obstacle-top' style='height:" + heightTop + "px;'></div><div class='obstacle-bottom' style='height:" + heightBottom + "px;'></div></div>");
 
 };
 
 //Bucle de 0 a 45 que ejecuta la funcion obstacleGenerator
-
 function obstacleTimer(){
    environment.obstacleCount++;
    if (environment.obstacleCount === 180){
@@ -149,11 +148,10 @@ function obstacleTimer(){
       environment.obstacleCount = 0;
 
    }
-}
+};
 
 
 //Funcion que elimina los obstaculos cuando desparecen de la pantalla
-
 function obstacleDelete(){
    if ($(".obstacle-animated:first").position().left < -90){
       $(".obstacle-animated:first").remove();
@@ -166,7 +164,7 @@ function fallDown(){
    environment.animationStop();
    environment.fallCondition = -1
    environment.obstacleCountStop(); //para que deje de ejecutarse la funcion obstacleGenerator()
-}
+};
 
 
 //Para todo el juego
@@ -176,7 +174,7 @@ function gameOver(){
    banana.stop();
    environment.animationStop(); 
    environment.obstacleCountStop()   //PARA (stop) el generador de obstáculos
-}
+};
 
 //funcion para las colisiones
 function collisionDetector(obj1, obj2, func){
@@ -187,78 +185,66 @@ function collisionDetector(obj1, obj2, func){
          func(); //Realizar alguna accion
          
    }
-}
+};
 
 // Detector de colisiones
-
 function isCollide() { //No puedo refactorizar las 2 primeras porque la posicion depende del tiempo y no del px, ya que funciona con CSS
    //Detector de colisiones obstacle-top 
    if( bird.positionX < $(".obstacle-animated").position().left + 90 &&
        bird.positionX + bird.width > $(".obstacle-animated").position().left &&
-       bird.positionY < $(".obstacle-top").position().top + $(".obstacle-top").height() + 32 &&
-      bird.height +bird.positionY > 0) {
+       bird.positionY < $(".obstacle-top").position().top + $(".obstacle-top").height() &&
+       bird.height + bird.positionY > 0) {
          gameOver();
-   }     
-   
+   };       
    //Detector de colisiones obstacle-bottom
    if (bird.positionX < $(".obstacle-animated").position().left + 90 &&
       bird.positionX + bird.width > $(".obstacle-animated").position().left &&
       bird.positionY > 388 - $(".obstacle-bottom").height() &&
       bird.height + bird.positionY < 388) {  
          gameOver();
-   }
-    
+   }    
    collisionDetector(bird, monster, gameOver);
-
-   collisionDetector(bird, banana, banana.remove);
-  
-}
-
-
+   collisionDetector(bird, banana, banana.remove); 
+};
 
 // Que aparezca un platano o monstruo en el mapa
-
 function addItem(obj, className){
-    if(obj.unique == 1){ //si es 0 retorna false, si es cualquier otro numero retorna true
+    if(obj.unique == 1){            //si es 0 retorna false, si es cualquier otro numero retorna true
          var x = obj.positionYGenerator();
          obj.positionY = x;
          $("#gameplay-area").append("<div class='"+className+" animated' style='top:"+ obj.positionY +"px'></div>");
          obj.unique = 0;
      } 
-}
+};
 
 // Que el platano o monstruo se mueva
-
 function moveItem(obj){
    if(obj.unique !== 1){
       obj.move();
    }
-}
-
+};
 
 // Elimina los objetos que se han salido del mapa
-
 function removeItem(obj, className){
    if(obj.positionX < -50){
          $("."+className).remove();
          obj.positionX = 1400;
          obj.unique = 1;
       }
-}
+};
 
+//Ejecuta la funcion addItem cuando se da la condicion
 function bananaRandom(){
    var random = Math.random()
-
    if(banana.unique === 1 && environment.obstacleCount == 10 && random > 0.75){
       addItem(banana, "banana");
    }
-}
+};
 
-
+//Ejecuta la funcion addItem cuando se da la condicion
 function monsterRandom(){
    var random = Math.random()
-
    if(monster.unique === 1 && random > 0.998){
       addItem(monster, "monster");
    }
-}
+};
