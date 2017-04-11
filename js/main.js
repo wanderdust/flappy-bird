@@ -127,8 +127,9 @@ function mainloop() {
 
    invencibility();
 
-   scoreCount.increase();
-   
+   score.increase(); 
+   score.doubleScore();
+  
 };
 
 // Funcion para saltar. Si toca el suelo deja de funcionar.
