@@ -7,13 +7,39 @@
     0% {background-position: 0px bottom;}
     100% {background-position:-552px bottom;}
 }
+@-moz-keyframes movebackgroundSky {
+    0% {background-position: 0px bottom;}
+    100% {background-position:-552px bottom;}
+}
+@-o-keyframes movebackgroundSky {
+    0% {background-position: 0px bottom;}
+    100% {background-position:-552px bottom;}
+}
+
 
 @-webkit-keyframes movebackgroundEarth {
     0% {background-position: 0px top;}
     100% {background-position:-1344px top;}
 }
+@-moz-keyframes movebackgroundEarth {
+    0% {background-position: 0px top;}
+    100% {background-position:-1344px top;}
+}
+@-o-keyframes movebackgroundEarth {
+    0% {background-position: 0px top;}
+    100% {background-position:-1344px top;}
+}
+
 
 @-webkit-keyframes birdanimation {
+    0% {background-position: 0px -0px;}
+    100%{background-position:-0px -72px;}
+}
+@-moz-keyframes birdanimation {
+    0% {background-position: 0px -0px;}
+    100%{background-position:-0px -72px;}
+}
+@-o-keyframes birdanimation {
     0% {background-position: 0px -0px;}
     100%{background-position:-0px -72px;}
 }
@@ -22,13 +48,37 @@
     0% {left: 1400px;}
     100%{left:-100px;}
 }
+@-moz-keyframes obstacleAnimation {
+    0% {left: 1400px;}
+    100%{left:-100px;}
+}
+@-o-keyframes obstacleAnimation {
+    0% {left: 1400px;}
+    100%{left:-100px;}
+}
 
 @-webkit-keyframes monsterAnimation {
     0% {background-position: 0px -0px;}
     100%{background-position:-0px -196px;}
 }
+@-moz-keyframes monsterAnimation {
+    0% {background-position: 0px -0px;}
+    100%{background-position:-0px -196px;}
+}
+@-o-keyframes monsterAnimation {
+    0% {background-position: 0px -0px;}
+    100%{background-position:-0px -196px;}
+}
 
 @-webkit-keyframes bananaAnimation {
+    0% {background-position: 0px -0px;}
+    100%{background-position:-0px -80px;}
+}
+@-moz-keyframes bananaAnimation {
+    0% {background-position: 0px -0px;}
+    100%{background-position:-0px -80px;}
+}
+@-o-keyframes bananaAnimation {
     0% {background-position: 0px -0px;}
     100%{background-position:-0px -80px;}
 }
