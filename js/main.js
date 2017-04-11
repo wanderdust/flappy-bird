@@ -86,20 +86,17 @@ function mainloop() {
    obstacleDelete();
    
    //Detecta cuando bird ha hecho colision
-   //isCollide();
-
-   //Crea elementos en el juego
-   //addObject(monster, "monster");
-  
+   isCollide();
 
    //Hace que el objeto avance
-   moveObject(banana);
-   moveObject(monster);
+   moveItem(banana);
+   moveItem(monster);
 
    //Elimina los objetos que se salen del mapa
-   removeObject(monster, "monster");
-   removeObject(banana, "banana");
+   removeItem(monster, "monster");
+   removeItem(banana, "banana");
 
+   //Los crea aleatoriamente
    bananaRandom();
    monsterRandom();
    
@@ -221,7 +218,7 @@ function isCollide() { //No puedo refactorizar las 2 primeras porque la posicion
 
 // Que aparezca un platano o monstruo en el mapa
 
-function addObject(obj, className){
+function addItem(obj, className){
     if(obj.unique == 1){ //si es 0 retorna false, si es cualquier otro numero retorna true
          var x = obj.positionYGenerator();
          obj.positionY = x;
@@ -232,7 +229,7 @@ function addObject(obj, className){
 
 // Que el platano o monstruo se mueva
 
-function moveObject(obj){
+function moveItem(obj){
    if(obj.unique !== 1){
       obj.move();
    }
@@ -241,7 +238,7 @@ function moveObject(obj){
 
 // Elimina los objetos que se han salido del mapa
 
-function removeObject(obj, className){
+function removeItem(obj, className){
    if(obj.positionX < -50){
          $("."+className).remove();
          obj.positionX = 1400;
@@ -253,7 +250,7 @@ function bananaRandom(){
    var random = Math.random()
 
    if(banana.unique === 1 && environment.obstacleCount == 10 && random > 0.75){
-      addObject(banana, "banana");
+      addItem(banana, "banana");
    }
 }
 
@@ -262,6 +259,6 @@ function monsterRandom(){
    var random = Math.random()
 
    if(monster.unique === 1 && random > 0.998){
-      addObject(monster, "monster");
+      addItem(monster, "monster");
    }
 }
