@@ -15,7 +15,14 @@ var bird = {
    positionX: 60,      //Posicion X del pájaro
    positionY: 210,     // guarda la posicion del pajaro en cada frame
    velocityY: 6,       // Velocidad -y del pajaro. No cte.
-   velocityReset: 7.2    // Variable para resetear la velocidad  
+   velocityReset: 7.2,    // Variable para resetear la velocidad  
+   changeColor: function(){
+      if(inmune.have === true){
+         $(".bird").css({"background-image": 'url(images/bird-invincible.png)'})
+      }else{
+         $(".bird").css({"background-image": 'url(images/bird.png)'})
+      }
+   }
 };
 
 
@@ -71,7 +78,6 @@ var inmune = {
    time: 300,          
    duration: function(){
       this.time--;
-      console.log(this.time)
       if (this.time === 0 && this.have === true){
          this.have = false;
       }
@@ -272,13 +278,15 @@ function monsterRandom(){
    }
 };
 
-
+//Te hace invencible durante 300fps
 function invencibility(){
   if(inmune.have === true){
       inmune.duration();
+      bird.changeColor();
   }
 }
 
+//Si te toca el monstruo mientras eres invencible mueres
 function monsterDie(){
    if(inmune.have === true){
       monster.remove()
