@@ -6,7 +6,7 @@ var environment = {
    obstacleCountStop: function(){return this.obstacleCount = 181},
    animationStop: function(){
       $(".animated").css({"-webkit-animation-play-state": 'paused'})    //funcion para desactivar animaciones css
-   },
+   }
 };
 
 var bird = {
@@ -84,6 +84,8 @@ var inmune = {
    }
 };
 
+
+
 $(document).ready(function() {   
    
    var gameInterval = setInterval(mainloop, environment.fps);    //Actualiza la posicion del pajaro en cada frame
@@ -124,6 +126,8 @@ function mainloop() {
    monsterRandom();
 
    invencibility();
+
+   scoreCount.increase();
    
 };
 
@@ -161,7 +165,7 @@ function obstacleGenerator (){
    var randomNumber = (Math.floor(Math.random()*(165))+35);
    var heightTop = randomNumber;
    var heightBottom = 235-randomNumber;
-   $("#gameplay-area").append("<div class='obstacle-animated animated'><div class='obstacle-top' style='height:" + heightTop + "px;'></div><div class='obstacle-bottom' style='height:" + heightBottom + "px;'></div></div>");
+   $("#gameplay-area").append("<div class='obstacle-animated animated obs-speed'><div class='obstacle-top' style='height:" + heightTop + "px;'></div><div class='obstacle-bottom' style='height:" + heightBottom + "px;'></div></div>");
 
 };
 
