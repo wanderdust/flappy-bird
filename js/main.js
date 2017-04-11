@@ -31,6 +31,9 @@ var monster = {
       this.positionX += this.velocityX;
       $(".monster").css({"left":this.positionX+ "px"});     
    },                                 // Actualiza positionX en cada frame
+   remove: function(){
+      $(".monster").remove();
+   },                    
    stop: function(){
       return this.velocityX = 0;
    }                                  // Pone a 0 velocityX, para que el monstruo deje de avanzar
