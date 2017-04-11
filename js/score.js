@@ -10,14 +10,18 @@ var score = {
    		$("#points").html(this.count);
    		}	
    },
-
    doubleScore: function(){
    	if(inmune.have !==true){
    		this.amount = 0.2
-   	}else{
+   	}else if(inmune.have === true && this.tripleScore === true){
+   		this.amount = 0.6;
+   		$("#points").append("<span> x3<span>")
+   	}else if (inmune.have === true){
    		this.amount = 0.4;
    		$("#points").append("<span> x2<span>")
    	}
-   }
+   },
+   tripleScore: false,
+   
 };
 

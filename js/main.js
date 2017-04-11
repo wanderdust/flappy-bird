@@ -129,6 +129,8 @@ function mainloop() {
 
    score.increase(); 
    score.doubleScore();
+
+   console.log(score.amount);
   
 };
 
@@ -288,12 +290,13 @@ function invencibility(){
   if(inmune.have === true){
       inmune.duration();
       bird.changeColor();
-  }
+  }else{score.tripleScore = false;}
 }
 
 //Si te toca el monstruo mientras eres invencible mueres
 function monsterDie(){
    if(inmune.have === true){
-      monster.remove()
+      monster.remove();
+      score.tripleScore = true;
    }else {gameOver()}
 }
