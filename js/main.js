@@ -86,11 +86,11 @@ function mainloop() {
    obstacleDelete();
    
    //Detecta cuando bird ha hecho colision
-   isCollide();
+   //isCollide();
 
    //Crea elementos en el juego
-   //addObject(monster, "monster");
-   //addObject(banana, "banana");
+   addObject(monster, "monster");
+  
 
    //Hace que el objeto avance
    moveObject(banana);
@@ -249,7 +249,9 @@ function removeObject(obj, className){
 }
 
 function bananaRandom(){
-   if(banana.unique === 1 && environment.obstacleCount == 10){
+   var random = Math.random()
+
+   if(banana.unique === 1 && environment.obstacleCount == 10 && random > 0.75){
       addObject(banana, "banana");
    }
 }
