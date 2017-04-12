@@ -285,3 +285,7 @@ body, html {
 	font-size:3em;
 	margin:0;
 }
+
+#score p .multiply{
+	color:red;
+}
