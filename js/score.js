@@ -28,7 +28,7 @@ var score = {
 // Aumenta la dificultad a medida que avanas en el juego
 function addDificutly(){
    if(score.count > 200 && score.count < 900){
-      environment.obstacleHeight = 235;
+      environment.obstacleHeight = 245;
    }else if (score.count > 900 && score.count < 1500){
        environment.obstacleHeight = 260;
    }else if (score.count > 1500 && score.count < 2000){
