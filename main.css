@@ -207,7 +207,7 @@ body, html {
 	background-position:center;
 	display:inline-block;
 	position:absolute;
-	top:-1px;
+	top:-2px;
 	background-repeat:no-repeat;
 }
 
@@ -230,7 +230,7 @@ body, html {
 	background-position:center;
 	display:inline-block;
 	position:absolute;
-	bottom:-1px;
+	bottom:-2px;
 	background-repeat:no-repeat;
 }
 

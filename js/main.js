@@ -1,7 +1,7 @@
 var environment = {
    gravity: 0.25,         // Constante
    fps: 1000/60,          // el loop se ejecuta 60fps 
-   fallCondition: 0,      // Pasa a ser -1 cuando choca con un obstaculo y asi se pone la velocidad a 0 en la funcion jump()
+   fallCondition: false,      // Pasa a ser true cuando choca con un obstaculo y asi se pone la velocidad a 0 en la funcion jump()
    obstacleCount: 119,    //Variable para el bucle que genera los obstaculos
    obstacleCountStop: function(){return this.obstacleCount = 121},
    animationStop: function(){
@@ -13,7 +13,8 @@ var environment = {
       $(".animated").css({"-webkit-animation-play-state": 'running'});    //funcion para desactivar animaciones css
       $(".animated").css({"-moz-animation-play-state": 'running'});
       $(".animated").css({"-o-animation-play-state": 'running'});
-   }
+   },
+   obstacleHeight: 235,
 };
 
 var bird = {
@@ -39,8 +40,8 @@ var monster = {
    positionX:1400,   //Guarda la posicion -X del monster en cada frame. 1400px es la inicial.
    positionY: 0,    //guarda la posicion aleatoria -Y entre 49px y 371px (ver monsterCreate())
    positionYGenerator:function(){return Math.random()*(322)+49;},    //Genera un numero aleatorio de posicion -Y que mas adelante se guarda en positionY
-   velocityX:-5,     //numero de px que avanza en cada frame. Cte
-   unique: 1,        //variable para que solo se pueda crear un monstruo a la vez
+   velocityX:-6,     //numero de px que avanza en cada frame. Cte
+   unique: true,        //variable para que solo se pueda crear un monstruo a la vez
    move: function(){    
       this.positionX += this.velocityX;
       $(".monster").css({"left":this.positionX+ "px"});     
@@ -50,8 +51,8 @@ var monster = {
    },                    
    stop: function(){
       return this.velocityX = 0;
-   }                                  // Pone a 0 velocityX, para que el monstruo deje de avanzar
-
+   },                                  // Pone a 0 velocityX, para que el monstruo deje de avanzar
+   addRandom: 0.998
 };
 
 
@@ -61,15 +62,20 @@ var banana = {
    positionX:1400,     //Guarda la posicion -X de banana en cada frame. 1400px es la inicial.
    positionY: 0,        //guarda la posicion aleatoria -Y generada por positionYGenerator
    positionYGenerator:function(){
-      return $(".obstacle-bottom:last").position().top - 90;
+      var heightTop = $(".obstacle-top:last").height();
+      var heightBottom = $(".obstacle-bottom:last").height();
+      var result = 388 - heightTop - heightBottom;
+      var middle = result/2;
+      return middle + heightTop+16;
+
    },                      //Genera una posicion entre obstacle top y obstacle bottom
    velocityX: -4.05,       //número de px que avanza en cada frame
-   unique: 1,           //variable para que solo se pueda crear un monstruo a la vez
+   unique: true,           //variable para que solo se pueda crear un monstruo a la vez
    move: function(){    
       this.positionX += this.velocityX;
       $(".banana").css({"left":this.positionX+ "px"});     
    },                                   // Actualiza positionX en cada frame
-   grab: function(){
+   grab: function(){                   // Funcion cuando el pajaro coge la banana
       $(".banana").remove();
       inmune.have = true;
       inmune.time = 300;
@@ -77,18 +83,19 @@ var banana = {
    stop: function(){
       return this.velocityX = 0;
    },                                       // Pone a 0 velocityX, para que el monstruo deje de avanzar   
-   remove: function(){
+   remove: function(){                       //function para eliminar la banana sin mas
        $(".banana").remove();
-   }                           
+   },
+   addRandom: 0.75                           
 };
 
 
-var inmune = {
-   have: false,
-   time: 300,          
-   duration: function(){
+var inmune = {                               //Objeto que recoge las propiedades de Invincibilidad
+   have: false,                              //Inmunidad desactivada si es false
+   time: 300,           
+   duration: function(){                     //Duracion de la inmunidad
       this.time--;
-      if (this.time === 0 && this.have === true){
+      if (!this.time && this.have){
          this.have = false;
       }
    }
@@ -135,16 +142,23 @@ function mainloop() {
    bananaRandom();
    monsterRandom();
 
+   //Establece cuando el bird es invencible
    invencibility();
 
+   //Lleva la cuenta de la puntuacion
    score.increase(); 
+
+   //Lleva la cuenta de cuando la puntuacion aumenta por coger algo
    score.multiplyScore();
+
+   //Aumenta la dificultad a medida que ganas puntos
+   addDificutly()
 };
 
 // Funcion para saltar. Si toca el suelo deja de funcionar.
    function jump(){
       $(document).on("click", function(){
-         if(bird.positionY<397 && environment.fallCondition === 0){
+         if(bird.positionY<397 && !environment.fallCondition){
             bird.velocityY = bird.velocityReset;
          }
       }); 
@@ -172,9 +186,10 @@ function offLimits(){
 
 // Aqui se crean los nuevos divs de obstaculos de diferentes tamanos
 function obstacleGenerator (){
-   var randomNumber = (Math.floor(Math.random()*(165))+35);
+   var minHeight = environment.obstacleHeight - 70;
+   var randomNumber = (Math.floor(Math.random()*(minHeight))+35);
    var heightTop = randomNumber;
-   var heightBottom = 235-randomNumber;
+   var heightBottom = environment.obstacleHeight-randomNumber;
    $("#gameplay-area").append("<div class='obstacle-animated animated obs-speed'><div class='obstacle-top' style='height:" + heightTop + "px;'></div><div class='obstacle-bottom' style='height:" + heightBottom + "px;'></div></div>");
 };
 
@@ -200,7 +215,7 @@ function obstacleDelete(){
 // Cuando el pájaro se choca cae al suelo
 function fallDown(){
    environment.animationStop();
-   environment.fallCondition = -1
+   environment.fallCondition = true;
    environment.obstacleCountStop(); //para que deje de ejecutarse la funcion obstacleGenerator()
 };
 
@@ -213,7 +228,6 @@ function gameOver(){
       banana.stop();
       environment.animationStop(); 
       environment.obstacleCountStop()   //PARA (stop) el generador de obstáculos
-      banana.remove();
    }else if (inmune.have && bird.positionY >= 397){ //Si inmune.have es true pero tocas el suelo GAME OVER
       inmune.have = false;
    }
@@ -252,17 +266,17 @@ function isCollide() { //No puedo refactorizar las 2 primeras porque la posicion
 
 // Que aparezca un platano o monstruo en el mapa
 function addItem(obj, className){
-    if(obj.unique == 1){            //si es 0 retorna false, si es cualquier otro numero retorna true
+    if(obj.unique){            //si es 0 retorna false, si es cualquier otro numero retorna true
          var x = obj.positionYGenerator();
          obj.positionY = x;
          $("#gameplay-area").append("<div class='"+className+" animated' style='top:"+ obj.positionY +"px'></div>");
-         obj.unique = 0;
+         obj.unique = false;
      } 
 };
 
 // Que el platano o monstruo se mueva
 function moveItem(obj){
-   if(obj.unique !== 1){
+   if(!obj.unique){
       obj.move();
    }
 };
@@ -272,14 +286,14 @@ function removeItem(obj, className){
    if(obj.positionX < -50){
          $("."+className).remove();
          obj.positionX = 1400;
-         obj.unique = 1;
+         obj.unique = true;
       }
 };
 
 //Ejecuta la funcion addItem cuando se da la condicion
 function bananaRandom(){
    var random = Math.random()
-   if(banana.unique === 1 && environment.obstacleCount == 10 && random > 0.00){
+   if(banana.unique && environment.obstacleCount == 10 && random > banana.addRandom){
       addItem(banana, "banana");
    }
 };
@@ -287,7 +301,7 @@ function bananaRandom(){
 //Ejecuta la funcion addItem cuando se da la condicion
 function monsterRandom(){
    var random = Math.random()
-   if(monster.unique === 1 && random > 0.0){
+   if(monster.unique && random > monster.addRandom){
       addItem(monster, "monster");
    }
 };
