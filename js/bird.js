@@ -35,4 +35,16 @@ var inmune = {                               //Objeto que recoge las propiedades
             bird.velocityY = bird.velocityReset;
          }
       }); 
+
+      //Handle space bar
+      $(document).keydown(function(e){
+         //space bar!
+         if(e.keyCode == 32 || e.keyCode == 38)
+             if(bird.positionY<397 && !environment.fallCondition){
+               bird.velocityY = bird.velocityReset;
+         }
+      });
    };
+
+
+
