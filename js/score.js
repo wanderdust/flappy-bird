@@ -10,13 +10,13 @@ var score = {
    		$("#points").html(this.count);
    		}	
    },
-   doubleScore: function(){
-   	if(inmune.have !==true){
+   multiplyScore: function(){
+   	if(!inmune.have ){
    		this.amount = 0.2
-   	}else if(inmune.have === true && this.tripleScore === true){
+   	}else if(inmune.have && this.tripleScore){
    		this.amount = 0.6;
    		$("#points").append('<span class="multiply"> x3<span>')
-   	}else if (inmune.have === true){
+   	}else if (inmune.have){
    		this.amount = 0.4;
    		$("#points").append('<span class="multiply"> x2<span>')
    	}

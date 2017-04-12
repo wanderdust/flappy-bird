@@ -2,8 +2,8 @@ var environment = {
    gravity: 0.25,         // Constante
    fps: 1000/60,          // el loop se ejecuta 60fps 
    fallCondition: 0,      // Pasa a ser -1 cuando choca con un obstaculo y asi se pone la velocidad a 0 en la funcion jump()
-   obstacleCount: 179,    //Variable para el bucle que genera los obstaculos
-   obstacleCountStop: function(){return this.obstacleCount = 181},
+   obstacleCount: 119,    //Variable para el bucle que genera los obstaculos
+   obstacleCountStop: function(){return this.obstacleCount = 121},
    animationStop: function(){
       $(".animated").css({"-webkit-animation-play-state": 'paused'});    //funcion para desactivar animaciones css
       $(".animated").css({"-moz-animation-play-state": 'paused'});
@@ -63,7 +63,7 @@ var banana = {
    positionYGenerator:function(){
       return $(".obstacle-bottom:last").position().top - 90;
    },                      //Genera una posicion entre obstacle top y obstacle bottom
-   velocityX: -3,       //número de px que avanza en cada frame
+   velocityX: -4.05,       //número de px que avanza en cada frame
    unique: 1,           //variable para que solo se pueda crear un monstruo a la vez
    move: function(){    
       this.positionX += this.velocityX;
@@ -138,7 +138,7 @@ function mainloop() {
    invencibility();
 
    score.increase(); 
-   score.doubleScore();
+   score.multiplyScore();
 };
 
 // Funcion para saltar. Si toca el suelo deja de funcionar.
@@ -181,7 +181,7 @@ function obstacleGenerator (){
 //Bucle de 0 a 45 que ejecuta la funcion obstacleGenerator
 function obstacleTimer(){
    environment.obstacleCount++;
-   if (environment.obstacleCount === 180){
+   if (environment.obstacleCount === 120){
       obstacleGenerator();
       environment.obstacleCount = 0;
 
@@ -207,14 +207,14 @@ function fallDown(){
 
 //Para todo el juego
 function gameOver(){
-   if(inmune.have !== true){ //Si inmune.have es true se desactivan las colisiones
+   if(!inmune.have){ //Si inmune.have es true se desactivan las colisiones
       fallDown();
       monster.stop();
       banana.stop();
       environment.animationStop(); 
       environment.obstacleCountStop()   //PARA (stop) el generador de obstáculos
       banana.remove();
-   }else if (inmune.have === true && bird.positionY >= 397){ //Si inmune.have es true pero tocas el suelo GAME OVER
+   }else if (inmune.have && bird.positionY >= 397){ //Si inmune.have es true pero tocas el suelo GAME OVER
       inmune.have = false;
    }
 };
@@ -294,7 +294,7 @@ function monsterRandom(){
 
 //Te hace invencible durante 300fps
 function invencibility(){
-  if(inmune.have === true){
+  if(inmune.have){
       inmune.duration();
       bird.changeColor();
   }else{score.tripleScore = false;}
@@ -302,7 +302,7 @@ function invencibility(){
 
 //Si te toca el monstruo mientras eres invencible mueres
 function monsterDie(){
-   if(inmune.have === true){
+   if(inmune.have){
       monster.remove();
       score.tripleScore = true;
    }else {gameOver()}
