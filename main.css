@@ -289,3 +289,14 @@ body, html {
 #score p .multiply{
 	color:red;
 }
+
+#start-menu{
+	position:absolute;
+	top:100px;
+	left: 90px;
+	height:200px;
+	width:186px;
+	background-image: url(images/splash.png);
+	background-repeat: no-repeat;
+
+}

@@ -18,6 +18,9 @@ var environment = {
 };
 
 
+
+
+
 // Establece los limites en el mapa
 function offLimits(){
    //Limites 

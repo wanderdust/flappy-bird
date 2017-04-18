@@ -1,7 +1,8 @@
 
-$(document).ready(function() {   
+$(document).ready(function() {      
+   var gameLoop = false;
+   startGame();
    
-   var gameInterval = setInterval(mainloop, environment.fps);    //Actualiza la posicion del pajaro en cada frame
 });
 
 function mainloop() {        
@@ -48,5 +49,7 @@ function mainloop() {
    score.multiplyScore();
 
    //Aumenta la dificultad a medida que ganas puntos
-   addDificutly()
+   addDificutly();
+
+   
 };
