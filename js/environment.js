@@ -74,6 +74,7 @@ function fallDown(){
    environment.animationStop();
    environment.fallCondition = true;
    environment.obstacleCountStop(); //para que deje de ejecutarse la funcion obstacleGenerator()
+
 };
 
 

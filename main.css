@@ -300,3 +300,28 @@ body, html {
 	background-repeat: no-repeat;
 
 }
+
+#menu-gameover{
+	position:absolute;
+	top:80px;
+	left:90px;
+	height:270px;
+	width:240px;
+}
+
+#scoreboard{
+	position:absolute;
+	height:200px;
+	width:240px;
+	background-image: url(images/scoreboard.png);
+}
+
+#replay{
+	position:absolute;
+	bottom:0px;
+	height: 60px;
+	width:110px;
+	left:50px;
+	background-image:url(images/replay.png);
+	background-repeat: no-repeat;
+}

@@ -16,3 +16,8 @@ function startGame(){
      	}
    })
 }
+
+
+function menuGameOver(){
+	$("#gameplay-area").append('<div id="menu-gameover"><div id="scoreboard"></div><a href="#"><div id="replay"></div></a></div>')
+}
