@@ -15,6 +15,7 @@ var environment = {
       $(".animated").css({"-o-animation-play-state": 'running'});
    },
    obstacleHeight: 235,
+   stop: function(){clearInterval(gameLoop);}   //Para el setInterval
 };
 
 
@@ -30,6 +31,8 @@ function offLimits(){
       bird.velocityY = 0;     
       bird.positionY=397;    
       gameOver();
+      menuGameOver();   //Aparece el menu de Game Over
+      //environment.stop(); //Para parar el setInterval
       // 2. Limites techo-rebote abajo
    } else if(bird.positionY < 35){
       bird.velocityReset = -environment.gravity;
@@ -65,7 +68,6 @@ function obstacleTimer(){
 function obstacleDelete(){
    if ($(".obstacle-animated:first").position().left < -90){
       $(".obstacle-animated:first").remove();
-
    }
 };
 
@@ -73,7 +75,7 @@ function obstacleDelete(){
 function fallDown(){
    environment.animationStop();
    environment.fallCondition = true;
-   environment.obstacleCountStop(); //para que deje de ejecutarse la funcion obstacleGenerator()
+   environment.obstacleCountStop(); //para que deje de ejecutarse la funcion obstacleGenerator();
 
 };
 
@@ -85,7 +87,7 @@ function gameOver(){
       monster.stop();
       banana.stop();
       environment.animationStop(); 
-      environment.obstacleCountStop()   //PARA (stop) el generador de obstáculos
+      environment.obstacleCountStop();   //PARA (stop) el generador de obstáculos
    }else if (inmune.have && bird.positionY >= 397){ //Si inmune.have es true pero tocas el suelo GAME OVER
       inmune.have = false;
    }

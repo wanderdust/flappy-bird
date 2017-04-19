@@ -51,5 +51,7 @@ function mainloop() {
    //Aumenta la dificultad a medida que ganas puntos
    addDificutly();
 
+   console.log("¿Se para el setInterval?")
+
    
 };

@@ -83,6 +83,34 @@
     100%{background-position:-0px -80px;}
 }
 
+
+@-webkit-keyframes gameOver {
+	0%{background-position: 0px 100px; opacity:0;}
+	100%{background-position: 0px 0px; opacity:1;}
+}
+@-moz-keyframes gameOver {
+	0%{background-position: 0px 100px; opacity:0;}
+	100%{background-position: 0px 0px; opacity:1;}
+}
+@-o-keyframes gameOver {
+	0%{background-position: 0px 100px; opacity:0;}
+	100%{background-position: 0px 0px; opacity:1;}
+}
+
+
+@-webkit-keyframes gameOverReplay {
+	0%{background-position: 0px 100px; opacity:0;}
+	100%{background-position: 0px 0px; opacity:1;}
+}
+@-moz-keyframes gameOverReplay {
+	0%{background-position: 0px 100px; opacity:0;}
+	100%{background-position: 0px 0px; opacity:1;}
+}
+@-o-keyframes gameOverReplay {
+	0%{background-position: 0px 100px; opacity:0;}
+	100%{background-position: 0px 0px; opacity:1;}
+}
+
 body, html {
 	height:100%;
 	margin:0;
@@ -134,7 +162,6 @@ body, html {
 	-webkit-animation-duration: 7.155s;
 	-webkit-animation-timing-function: linear;
 	-webkit-animation-iteration-count: infinite;*/
-	z-index:0;
 
 	
 }
@@ -304,24 +331,32 @@ body, html {
 #menu-gameover{
 	position:absolute;
 	top:80px;
-	left:90px;
-	height:270px;
+	left:70px;
+	height:370px;
 	width:240px;
 }
 
 #scoreboard{
 	position:absolute;
-	height:200px;
+	top:0px;
+	height:250px;
 	width:240px;
 	background-image: url(images/scoreboard.png);
+	background-repeat: no-repeat;
+	-webkit-animation: gameOver 1s ease;
+	-moz-animation:gameOver 1s ease;
+	-o-animation:gameOver 1s ease;
 }
 
 #replay{
 	position:absolute;
 	bottom:0px;
-	height: 60px;
+	height: 160px;
 	width:110px;
 	left:50px;
 	background-image:url(images/replay.png);
 	background-repeat: no-repeat;
+	-webkit-animation: gameOverReplay 2s ease;
+	-moz-animation:gameOverReplay 2s ease;
+	-o-animation:gameOverReplay 2s ease;
 }
