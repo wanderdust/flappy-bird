@@ -1,8 +1,9 @@
+var gameLoop = false;
 
-$(document).ready(function() {      
-   var gameLoop = false;
-   startGame();
-   
+
+$(document).ready(function() {        
+   startGame();   //Starts the mainLoop at 60fps
+
 });
 
 function mainloop() {        
@@ -51,7 +52,9 @@ function mainloop() {
    //Aumenta la dificultad a medida que ganas puntos
    addDificutly();
 
-   console.log("¿Se para el setInterval?")
+   //Cuando le das al play, el juego empieza de nuevo
+   $("#replay").on("click", function(){restart()}) 
 
+   console.log("¿Se para el setInterval?");
    
 };

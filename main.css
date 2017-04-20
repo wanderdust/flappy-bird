@@ -263,13 +263,13 @@ body, html {
 
 .monster{
 	position:absolute;
-	top:210px;
+	top:0px;
 	left: 1800px;
 	height:49px;
 	width:60px;
 	background-image:url('images/spa-monster.png');
 	background-position: 0px 0px;
-	z-index: 9999;
+	z-index: 9990;
 	-webkit-animation: monsterAnimation 0.6s steps(4) infinite ;
 	-moz-animation: monsterAnimation 0.6s steps(4) infinite ;
 	-o-animation: monsterAnimation 0.6s steps(4) infinite ;
@@ -278,12 +278,12 @@ body, html {
 
 .banana{
 	position:absolute;
-	top: 200px;
+	top: 0px;
 	left:1800px;
 	width:20px;
 	height:20px;
 	background-image:url(images/banana.png);
-	z-index: 9998;
+	z-index: 9991;
 	-webkit-animation: bananaAnimation 1s steps(4) infinite;
 	-moz-animation: bananaAnimation 1s steps(4) infinite;
 	-o-animation: bananaAnimation 1s steps(4) infinite;
@@ -334,6 +334,7 @@ body, html {
 	left:70px;
 	height:370px;
 	width:240px;
+	z-index: 9999;
 }
 
 #scoreboard{
@@ -353,7 +354,7 @@ body, html {
 	bottom:0px;
 	height: 160px;
 	width:110px;
-	left:50px;
+	left:60px;
 	background-image:url(images/replay.png);
 	background-repeat: no-repeat;
 	-webkit-animation: gameOverReplay 2s ease;

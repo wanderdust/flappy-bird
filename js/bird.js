@@ -6,7 +6,7 @@ var bird = {
    velocityY: 6,       // Velocidad -y del pajaro. No cte.
    velocityReset: 7.2,    // Variable para resetear la velocidad  
    changeColor: function(){
-      if(inmune.have === true){
+      if(inmune.have){
          $(".bird").css({"background-image": 'url(images/bird-invincible.png)'})
       }else{
          $(".bird").css({"background-image": 'url(images/bird.png)'})

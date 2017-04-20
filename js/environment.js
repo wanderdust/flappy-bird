@@ -15,7 +15,10 @@ var environment = {
       $(".animated").css({"-o-animation-play-state": 'running'});
    },
    obstacleHeight: 235,
-   stop: function(){clearInterval(gameLoop);}   //Para el setInterval
+   stop: function(){clearInterval(gameLoop)},   //Para el setInterval
+   obstacleRemove: function(){
+      $(".obstacle-animated").remove();
+   },
 };
 
 
@@ -79,17 +82,23 @@ function fallDown(){
 
 };
 
+//Pausa el Juego entero cuando se ejecute
+function pauseAll(){
+   fallDown();
+   monster.stop();
+   banana.stop();
+}
 
 //Para todo el juego
 function gameOver(){
    if(!inmune.have){ //Si inmune.have es true se desactivan las colisiones
-      fallDown();
-      monster.stop();
-      banana.stop();
-      environment.animationStop(); 
-      environment.obstacleCountStop();   //PARA (stop) el generador de obstáculos
+     pauseAll();
    }else if (inmune.have && bird.positionY >= 397){ //Si inmune.have es true pero tocas el suelo GAME OVER
       inmune.have = false;
+      $(".bird").css({"background-image": 'url(images/bird.png)'});
+      pauseAll();
+
+      
    }
 };
 
