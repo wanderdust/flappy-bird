@@ -22,7 +22,6 @@ var environment = {
 };
 
 var sounds = {
-   music: new buzz.sound("images/sounds/soundtrack.mp3", {volume:19}),
    soundHit: new buzz.sound("images/sounds/sfx_hit.ogg"),
    soundDie: new buzz.sound("images/sounds/sfx_die.ogg"),
    soundBanana: new buzz.sound("images/sounds/sfx_banana.wav"),
