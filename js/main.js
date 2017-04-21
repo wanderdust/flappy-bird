@@ -56,5 +56,7 @@ function mainloop() {
    $("#replay").on("click", function(){restart()}) 
 
    console.log("¿Se para el setInterval?");
-   
+
+
+   showScore();
 };

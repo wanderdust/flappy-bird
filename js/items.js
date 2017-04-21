@@ -1,10 +1,10 @@
 var monster = {
    width: 60,
    height: 49,
-   positionX:1400,   //Guarda la posicion -X del monster en cada frame. 1400px es la inicial.
-   positionY: 0,    //guarda la posicion aleatoria -Y entre 49px y 371px (ver monsterCreate())
+   positionX:1400,      //Guarda la posicion -X del monster en cada frame. 1400px es la inicial.
+   positionY: 0,        //guarda la posicion aleatoria -Y entre 49px y 371px (ver monsterCreate())
    positionYGenerator:function(){return Math.random()*(322)+49;},    //Genera un numero aleatorio de posicion -Y que mas adelante se guarda en positionY
-   velocityX:-6,     //numero de px que avanza en cada frame. Cte
+   velocityX:-6,        //numero de px que avanza en cada frame. Cte
    unique: true,        //variable para que solo se pueda crear un monstruo a la vez
    move: function(){    
       this.positionX += this.velocityX;
@@ -23,8 +23,8 @@ var monster = {
 var banana = {
    height: 20,
    width: 20,
-   positionX:1400,     //Guarda la posicion -X de banana en cada frame. 1400px es la inicial.
-   positionY: 0,        //guarda la posicion aleatoria -Y generada por positionYGenerator
+   positionX:1400,      //Guarda la posicion -X de banana en cada frame. 1400px es la inicial.
+   positionY: 0,        //Guarda la posicion aleatoria -Y generada por positionYGenerator
    positionYGenerator:function(){
       var heightTop = $(".obstacle-top:last").height();
       var heightBottom = $(".obstacle-bottom:last").height();
@@ -35,19 +35,19 @@ var banana = {
    },                      //Genera una posicion entre obstacle top y obstacle bottom
    velocityX: -4.05,       //número de px que avanza en cada frame
    unique: true,           //variable para que solo se pueda crear un monstruo a la vez
-   move: function(){    
+   move: function(){       // Actualiza positionX en cada frame
       this.positionX += this.velocityX;
       $(".banana").css({"left":this.positionX+ "px"});     
-   },                                   // Actualiza positionX en cada frame
-   grab: function(){                   // Funcion cuando el pajaro coge la banana
+   },                                     
+   grab: function(){                      // Funcion cuando el pajaro coge la banana
       $(".banana").remove();
       inmune.have = true;
       inmune.time = 300;
-   },                                     //Elimina el objeto DOM de banana
-   stop: function(){
+   },                                     
+   stop: function(){                      // Pone a 0 velocityX, para que el monstruo deje de avanzar  
       return this.velocityX = 0;
-   },                                       // Pone a 0 velocityX, para que el monstruo deje de avanzar   
-   remove: function(){                       //function para eliminar la banana sin mas
+   },                                      
+   remove: function(){                    //Funcion para eliminar la banana sin mas
        $(".banana").remove();
    },
    addRandom: 0.75                           

@@ -1,5 +1,5 @@
 var startMenu = {
-   firstClick: false,	//Para que empiece el juego
+   firstClick: false,	//Condicion para que empiece el juego
    add: function(){
    	$("#gameplay-area").append('<div id="start-menu"></div>');
    		$(".bird").css({"top":210+"px"});
@@ -14,7 +14,7 @@ var startMenu = {
 
 var gameoverMenu = {
 	add: function(){
-		$("#gameplay-area").append('<div id="menu-gameover"><div id="scoreboard"></div><a href="#"><div id="replay"></div></a></div>');
+		$("#gameplay-area").append('<div id="menu-gameover"><div id="scoreboard"><div id="scoreFinal"></div><div id="highScore"></div></div><a href="#"><div id="replay"></div></a></div>');
 	},
 	remove: function(){
 		$("#menu-gameover").remove();
@@ -35,10 +35,12 @@ function startGame(){
 
 //Aparece un menu de Game Over
 function menuGameOver(){
+	finalScore();
 	gameoverMenu.add();
 	environment.stop(); //Para parar el setInterval
 }
 
+//Elimina todo del mapa cuando se ejecuta
 function removeFromMap(){
 	gameoverMenu.remove();
 	environment.obstacleRemove();
@@ -46,6 +48,7 @@ function removeFromMap(){
 	banana.remove();
 }
 
+//Resetea todos los parametros al valor inicial
 function resetAllParameters(){
 	environment.gravity = 0.25;
 	monster.velocityX = -6;
@@ -62,12 +65,13 @@ function resetAllParameters(){
 
 }
 
+//Reinicia el juego para volver a empezar
 function restart(){
-	//Some reset Function	
 	removeFromMap();
 	resetAllParameters();
 	startMenu.add();
 
-
-	setTimeout(function(){startMenu.firstClick = false;}, 1)
+	//Pone firstClick en false instantes despues de añadir el menu
+	//para evitar que se ejecute automaticamente al dar a replay
+	setTimeout(function(){startMenu.firstClick = false;}, 1); 	
 }

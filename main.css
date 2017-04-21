@@ -85,30 +85,30 @@
 
 
 @-webkit-keyframes gameOver {
-	0%{background-position: 0px 100px; opacity:0;}
-	100%{background-position: 0px 0px; opacity:1;}
+	0%{top:100px; opacity:0;}
+	100%{top:0px; opacity:1;}
 }
 @-moz-keyframes gameOver {
-	0%{background-position: 0px 100px; opacity:0;}
-	100%{background-position: 0px 0px; opacity:1;}
+	0%{top:100px; opacity:0;}
+	100%{top:0px; opacity:1;}
 }
 @-o-keyframes gameOver {
-	0%{background-position: 0px 100px; opacity:0;}
-	100%{background-position: 0px 0px; opacity:1;}
+	0%{top:100px; opacity:0;}
+	100%{top:0px; opacity:1;}
 }
 
 
 @-webkit-keyframes gameOverReplay {
-	0%{background-position: 0px 100px; opacity:0;}
-	100%{background-position: 0px 0px; opacity:1;}
+	0%{top:272px; opacity:0;}
+	100%{top:210px; opacity:1;}
 }
 @-moz-keyframes gameOverReplay {
-	0%{background-position: 0px 100px; opacity:0;}
-	100%{background-position: 0px 0px; opacity:1;}
+	0%{top:272px; opacity:0;}
+	100%{top:210px; opacity:1;}
 }
 @-o-keyframes gameOverReplay {
-	0%{background-position: 0px 100px; opacity:0;}
-	100%{background-position: 0px 0px; opacity:1;}
+	0%{top:272px; opacity:0;}
+	100%{top:210px; opacity:1;}
 }
 
 body, html {
@@ -332,7 +332,7 @@ body, html {
 	position:absolute;
 	top:80px;
 	left:70px;
-	height:370px;
+	height:270px;
 	width:240px;
 	z-index: 9999;
 }
@@ -340,7 +340,7 @@ body, html {
 #scoreboard{
 	position:absolute;
 	top:0px;
-	height:250px;
+	height:188px;
 	width:240px;
 	background-image: url(images/scoreboard.png);
 	background-repeat: no-repeat;
@@ -352,12 +352,31 @@ body, html {
 #replay{
 	position:absolute;
 	bottom:0px;
-	height: 160px;
+	height:60px;
 	width:110px;
 	left:60px;
 	background-image:url(images/replay.png);
 	background-repeat: no-repeat;
-	-webkit-animation: gameOverReplay 2s ease;
-	-moz-animation:gameOverReplay 2s ease;
-	-o-animation:gameOverReplay 2s ease;
+	-webkit-animation: gameOverReplay 1.5s ease;
+	-moz-animation:gameOverReplay 1.5s ease;
+	-o-animation:gameOverReplay 1.5s ease;
+}
+
+#scoreFinal{
+	position:absolute;
+	min-width:45px;
+	top:105px;
+	left:165px;
+	text-align:right;
+}
+
+#highScore{
+	position:absolute;
+	min-width:45px;
+	top:150px;
+	left:165px;
+	text-align:right;
+}
+.font-numbers{
+	padding:0.5px;
 }

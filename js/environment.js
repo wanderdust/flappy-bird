@@ -1,8 +1,8 @@
 var environment = {
-   gravity: 0.25,         // Constante
-   fps: 1000/60,          // el loop se ejecuta 60fps 
+   gravity: 0.25,             // Constante
+   fps: 1000/60,              // el loop se ejecuta 60fps 
    fallCondition: false,      // Pasa a ser true cuando choca con un obstaculo y asi se pone la velocidad a 0 en la funcion jump()
-   obstacleCount: 119,    //Variable para el bucle que genera los obstaculos
+   obstacleCount: 119,        //Variable para el bucle que genera los obstaculos
    obstacleCountStop: function(){return this.obstacleCount = 121},
    animationStop: function(){
       $(".animated").css({"-webkit-animation-play-state": 'paused'});    //funcion para desactivar animaciones css
@@ -35,7 +35,7 @@ function offLimits(){
       bird.positionY=397;    
       gameOver();
       menuGameOver();   //Aparece el menu de Game Over
-      //environment.stop(); //Para parar el setInterval
+      
       // 2. Limites techo-rebote abajo
    } else if(bird.positionY < 35){
       bird.velocityReset = -environment.gravity;
@@ -97,8 +97,6 @@ function gameOver(){
       inmune.have = false;
       $(".bird").css({"background-image": 'url(images/bird.png)'});
       pauseAll();
-
-      
    }
 };
 
