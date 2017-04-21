@@ -17,6 +17,7 @@ Aquí va una lista de todo lo que he aprendido gracias a la realización de este
 - Mayor soltura con las funciones y como crear operaciones mas complejas.
 - Mayor soltura con las matrices y sus métodos.
 - Que se pueden hacer animaciones con CSS3.
+- Como trabajar con un controlador de versiones (git).
 
 
 
