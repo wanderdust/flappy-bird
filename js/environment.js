@@ -21,8 +21,25 @@ var environment = {
    },
 };
 
+var sounds = {
+   music: new buzz.sound("images/sounds/soundtrack.mp3", {volume:19}),
+   soundHit: new buzz.sound("images/sounds/sfx_hit.ogg"),
+   soundDie: new buzz.sound("images/sounds/sfx_die.ogg"),
+   soundBanana: new buzz.sound("images/sounds/sfx_banana.wav"),
+   soundKick: new buzz.sound("images/sounds/sfx_kick.wav"),
+   oneHit: true,
+}
 
 
+
+function dieSounds(){
+   if(sounds.oneHit){
+      sounds.soundHit.play().bindOnce("ended", function() {
+      sounds.soundDie.play();
+      sounds.oneHit = false;
+      });
+   }
+}
 
 
 // Establece los limites en el mapa
@@ -34,6 +51,7 @@ function offLimits(){
       bird.velocityY = 0;     
       bird.positionY=397;    
       gameOver();
+      dieSounds()
       menuGameOver();   //Aparece el menu de Game Over
       
       // 2. Limites techo-rebote abajo
@@ -93,11 +111,13 @@ function pauseAll(){
 function gameOver(){
    if(!inmune.have){ //Si inmune.have es true se desactivan las colisiones
      pauseAll();
+     dieSounds()
    }else if (inmune.have && bird.positionY >= 397){ //Si inmune.have es true pero tocas el suelo GAME OVER
       inmune.have = false;
       $(".bird").css({"background-image": 'url(images/bird.png)'});
       pauseAll();
    }
+   
 };
 
 //funcion para las colisiones
@@ -119,6 +139,7 @@ function isCollide() { //No puedo refactorizar las 2 primeras porque la posicion
        bird.positionY < $(".obstacle-top").position().top + $(".obstacle-top").height() &&
        bird.height + bird.positionY > 0) {
          gameOver();
+
    };       
    //Detector de colisiones obstacle-bottom
    if (bird.positionX < $(".obstacle-animated").position().left + 90 &&

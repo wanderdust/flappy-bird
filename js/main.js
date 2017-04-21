@@ -3,7 +3,7 @@ var gameLoop = false;
 
 $(document).ready(function() {        
    startGame();   //Starts the mainLoop at 60fps
-
+   sounds.music.play();
 });
 
 function mainloop() {        

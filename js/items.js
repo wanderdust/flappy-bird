@@ -43,6 +43,7 @@ var banana = {
       $(".banana").remove();
       inmune.have = true;
       inmune.time = 300;
+      sounds.soundBanana.play();
    },                                     
    stop: function(){                      // Pone a 0 velocityX, para que el monstruo deje de avanzar  
       return this.velocityX = 0;
@@ -50,7 +51,7 @@ var banana = {
    remove: function(){                    //Funcion para eliminar la banana sin mas
        $(".banana").remove();
    },
-   addRandom: 0.75                           
+   addRandom:0.75                           
 };
 
 
@@ -111,6 +112,7 @@ function invencibility(){
 function monsterDie(){
    if(inmune.have){
       monster.remove();
+      sounds.soundKick.play();
       score.tripleScore = true;
    }else {gameOver()}
 }

@@ -29,6 +29,7 @@ function startGame(){
      		startMenu.remove();
       		gameLoop = setInterval(mainloop, environment.fps);    //Actualiza la posicion del pajaro en cada frame
       		startMenu.firstClick = true;
+      		
      	}
    })
 }
@@ -62,6 +63,7 @@ function resetAllParameters(){
 	score.init = 0;
 	$("#points").html("0");
 	inmune.have = false;
+	sounds.oneHit = true;
 
 }
 
