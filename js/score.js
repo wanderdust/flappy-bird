@@ -25,28 +25,29 @@ var score = {
    splitScore: [],        //Array with the current splited score
    highScore: [],         //Array with the highest Score
    splitHighScore: []     //Array with the highest splited score
-
 };
 
 // Aumenta la dificultad a medida que avanas en el juego
 function addDificutly(){
-   if(score.count > 200 && score.count < 900){
-      environment.obstacleHeight = 245;
-   }else if (score.count > 900 && score.count < 1500){
+  if(score.count < 199){
+    environment.obstacleHeight = 200
+  }else if(score.count > 200 && score.count < 900){
+      environment.obstacleHeight = 235;
+   }else if (score.count >= 900 && score.count < 1500){
+       environment.obstacleHeight = 250;
+   }else if (score.count >= 1500 && score.count < 2000){
        environment.obstacleHeight = 260;
-   }else if (score.count > 1500 && score.count < 2000){
-       environment.obstacleHeight = 270;
        banana.addRandom = 0.6;
        monster.addRandom = 0.95;
-   }else if (score.count > 2000){
+   }else if (score.count >= 2000){
       environment.obstacleHeight = 275;
        banana.addRandom = 0.5;
        monster.addRandom = 0.94;
-   }else{environment.obstacleHeight = 235}
+   }
 }
 
 
-
+//Hace los calculos para poner las imagenes de los numeros en vez de solo numeros
 function finalScore(){
   score.final.splice(0,1,score.count);
   score.splitScore = score.final[0].split("");
@@ -55,6 +56,7 @@ function finalScore(){
   score.splitHighScore = sortedScore[0].split("");
 }
 
+//Incluye la puntuacion final y mas alta en el DOM
 function showScore(){
   for(var i = 0; i<score.splitScore.length; i++){
     $("#scoreFinal").append("<img class='font-numbers' src='images/font_small_"+score.splitScore[i]+".png'></img>");
@@ -62,4 +64,19 @@ function showScore(){
   for(var i = 0; i<score.splitHighScore.length; i++){
      $("#highScore").append("<img class='font-numbers' src='images/font_small_"+score.splitHighScore[i]+".png'></img>");
   }
+  showMedal()
 }
+
+//Te da una medalla en funcion de tu puntuacion
+function showMedal(){
+  if(score.count >= 2000){
+    $("#medal").html("<img src='images/medal_platinum.png'></img>")
+  }else if(score.count>=1500){
+    $("#medal").html("<img src='images/medal_gold.png'></img>")
+  }else if(score.count>=1000){
+    $("#medal").html("<img src='images/medal_silver.png'></img>")
+  }else if(score.count>=500){
+    $("#medal").html("<img src='images/medal_bronze.png'></img>")
+  }
+}
+

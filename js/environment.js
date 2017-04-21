@@ -14,7 +14,7 @@ var environment = {
       $(".animated").css({"-moz-animation-play-state": 'running'});
       $(".animated").css({"-o-animation-play-state": 'running'});
    },
-   obstacleHeight: 235,
+   obstacleHeight: 200,
    stop: function(){clearInterval(gameLoop)},   //Para el setInterval
    obstacleRemove: function(){
       $(".obstacle-animated").remove();

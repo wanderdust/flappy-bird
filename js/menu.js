@@ -14,7 +14,7 @@ var startMenu = {
 
 var gameoverMenu = {
 	add: function(){
-		$("#gameplay-area").append('<div id="menu-gameover"><div id="scoreboard"><div id="scoreFinal"></div><div id="highScore"></div></div><a href="#"><div id="replay"></div></a></div>');
+		$("#gameplay-area").append('<div id="menu-gameover"><div id="scoreboard"><div id="scoreFinal"></div><div id="highScore"></div><div id="medal"></div></div><a href="#"><div id="replay"></div></a></div>');
 	},
 	remove: function(){
 		$("#menu-gameover").remove();

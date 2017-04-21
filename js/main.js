@@ -55,8 +55,6 @@ function mainloop() {
    //Cuando le das al play, el juego empieza de nuevo
    $("#replay").on("click", function(){restart()}) 
 
-   console.log("¿Se para el setInterval?");
-
-
+   //Muestra el score en el menu de Game Over
    showScore();
 };
