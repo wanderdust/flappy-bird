@@ -35,6 +35,8 @@ No tengo intencion de robar este juego, o reclamarlo como mio. Esto es solo una 
 ------
 
 Gracias a @nebez por servirme como guía en las primeras fases del juego con su repositorio.
+
+
 -----------------
 
 
