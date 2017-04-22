@@ -12,7 +12,6 @@ var monster = {
    },                                 // Actualiza positionX en cada frame
    remove: function(){
       $(".monster").remove();
-      this.positionX = 1400;
    },                    
    stop: function(){
       return this.velocityX = 0;
