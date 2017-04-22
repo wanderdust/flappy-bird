@@ -34,7 +34,9 @@ No tengo intencion de robar este juego, o reclamarlo como mio. Esto es solo una 
 
 ------
 
-Gracias a [@nebez] por servirme como guía en las primeras fases del juego con su repositorio.
+Gracias a @nebez por servirme como guía en las primeras fases del juego con su repositorio.
+-----------------
+
 
 
 
@@ -71,4 +73,4 @@ I have not intention to steal the game, or claim it as my own. This is only a re
 
 ----------
 
-Thanks to [@nebez] for being my guide in the first steps of this game with his repository. 
+Thanks to @nebez for being my guide in the first steps of this game with his repository. 
