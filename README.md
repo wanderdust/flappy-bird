@@ -8,6 +8,7 @@ Es posible que el juego lagee a veces, pero esto es lo mejor que he conseguido h
 -------
 
 COSAS QUE HE APRENDIDO
+---------
 
 Aquí va una lista de todo lo que he aprendido gracias a la realización de este juego. El juego lo empecé 3 meses después de empezar a programar en Javascript:
 
@@ -24,6 +25,7 @@ Aquí va una lista de todo lo que he aprendido gracias a la realización de este
 ------
 
 IMPORTANTE
+---------
 
 Todos los elementos visuales y texturas han sido extraidos del juego original Flappy Bird. Yo solo he hecho el código, no he diseñado los elementos visuales. 
 
@@ -66,7 +68,7 @@ Here is a list of some of the things I´ve learned by coding this game. I starte
 
 
 IMPORTANT
---------------
+---------
 All the visual assets and the textures have been extrated from the original game Flappy Bird. I´ve only coded it, not designed the visual assets. 
 
 I am not the owner of this assets nor I have explicit permission from its owners to use them. They all belong to its original creator Dong Nguyen and .Gears games(http://www.dotgears.com/).
