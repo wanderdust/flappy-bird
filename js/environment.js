@@ -108,7 +108,7 @@ function pauseAll(){
 
 //Para todo el juego
 function gameOver(){
-   if(!inmune.have){ //Si inmune.have es true se desactivan las colisiones
+   if(!inmune.have){ //Si inmune.have es false mueres
      pauseAll();
      dieSounds()
    }else if (inmune.have && bird.positionY >= 397){ //Si inmune.have es true pero tocas el suelo GAME OVER

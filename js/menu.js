@@ -64,6 +64,8 @@ function resetAllParameters(){
 	$("#points").html("0");
 	inmune.have = false;
 	sounds.oneHit = true;
+	banana.addRandom = 0.75;
+    monster.addRandom = 0.998;
 
 }
 
