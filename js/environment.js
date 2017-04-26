@@ -56,6 +56,7 @@ function pauseAll(){
    monster.stop();
    otherMonster.stop();
    banana.stop();
+   score.run = false;
 };
 
 //Para todo el juego

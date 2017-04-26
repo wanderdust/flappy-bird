@@ -8,6 +8,7 @@ var startMenu = {
    },	//Para anadir el menu principal.
    remove: function(){
    	$("#start-menu").remove();
+   	score.run = true;
    },	//Para eliminar el menu principal.
    restart: function(){
    	return this.firstClick = false

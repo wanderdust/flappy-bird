@@ -2,13 +2,14 @@ var score = {
   init: 0,                //Puntuacion inicial con decimales.
   count: 0,               //Puntuacion actual sin decimales.
   amount: 0.2,            //Cantidad de puntos que se suman por cada frame.
+  run: false,
   tripleScore: false,     //TripleScore es false por defecto.
   final: [0],             //Array with the current score.
   splitScore: [],         //Array with the current splited score.
   highScore: [],          //Array with the highest score.
   splitHighScore: [],     //Array with the highest splited score.       
   increase: function(){
-   	if(monster.velocityX){
+   	if(score.run){
 		var sum = (this.init+=this.amount);
    		this.count = sum.toFixed(0);
    		$("#points").html(this.count);
@@ -17,10 +18,10 @@ var score = {
   multiplyScore: function(){
    	if(!inmune.have){
    		this.amount = 0.2
-   	}else if(inmune.have && this.tripleScore && monster.velocityX){
+   	}else if(inmune.have && this.tripleScore && score.run){
    		this.amount = 0.6;
    		$("#points").append('<span class="multiply"> x3<span>')
-   	}else if (inmune.have && monster.velocityX){
+   	}else if (inmune.have && score.run){
    		this.amount = 0.4;
    		$("#points").append('<span class="multiply"> x2<span>')
    	}
