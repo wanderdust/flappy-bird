@@ -14,7 +14,6 @@ var bird = {
    }
 };
 
-
 var inmune = {                               //Objeto que recoge las propiedades de Invincibilidad
    have: false,                              //Inmunidad desactivada si es false
    time: 300,           

@@ -19,7 +19,7 @@
    addRandom: 0.998
 };*/
 
-var Monster = function(name){
+var Enemy = function(name){
    var obj = {
       name: name,
       width: 60,
@@ -45,10 +45,10 @@ var Monster = function(name){
    return obj;
 }
 
-var monster = Monster("monster");
-var otherMonster = Monster("otherMonster");
+var monster = Enemy("monster");
+var otherMonster = Enemy("otherMonster");
 
-var banana = {
+/*var banana = {
    height: 20,
    width: 20,
    positionX:1400,      //Guarda la posicion -X de banana en cada frame. 1400px es la inicial.
@@ -80,10 +80,48 @@ var banana = {
        $(".banana").remove();
    },
    addRandom:0.75                           
-};
+};*/
 
+var Collectable = function(name){
+   var obj = {
+      name: name,
+      height: 20,
+      width: 20,
+      positionX:1400,
+      positionY: 0,
+      velocityX: -4.05,
+      unique: true,
+      addRandom:0.75,
+   }
 
+   obj.positionYGenerator = function(){
+      var heightTop = $(".obstacle-top:last").height();
+      var heightBottom = $(".obstacle-bottom:last").height();
+      var result = 388 - heightTop - heightBottom;
+      var middle = result/2;
+      return middle + heightTop+16;
 
+   };
+   obj.move = function(){
+      this.positionX += this.velocityX;
+      $(".banana").css({"left":this.positionX+ "px"});     
+   };
+   obj.grab = function(){
+      $(".banana").remove();
+      inmune.have = true;
+      inmune.time = 300;
+      sounds.soundBanana.play();
+   };
+   obj.stop = function(){
+      return this.velocityX = 0;
+   };
+   obj.remove = function(){                    //Funcion para eliminar la banana sin mas
+       $(".banana").remove();
+   }
+   return obj;
+}
+
+var banana = Collectable("banana")
 
 
 // Que aparezca un platano o monstruo en el mapa
