@@ -46,6 +46,7 @@ function removeFromMap(){
 	gameoverMenu.remove();
 	environment.obstacleRemove();
 	monster.remove();
+	otherMonster.remove();
 	banana.remove();
 }
 
@@ -55,6 +56,10 @@ function resetAllParameters(){
 	monster.velocityX = -6;
 	monster.positionX = 1400;
 	monster.positionY = -50;
+	otherMonster.velocityX = -6;
+	otherMonster.positionX = 1400;
+	otherMonster.positionY = -50;
+
 	banana.velocityX = -4.05;
 	banana.positionX = 1400;
 	banana.positionY = -50;
@@ -66,6 +71,7 @@ function resetAllParameters(){
 	sounds.oneHit = true;
 	banana.addRandom = 0.75;
     monster.addRandom = 0.998;
+    otherMonster.addRandom = 0.998;
 
 }
 

@@ -103,6 +103,7 @@ function fallDown(){
 function pauseAll(){
    fallDown();
    monster.stop();
+   otherMonster.stop();
    banana.stop();
 }
 
@@ -147,6 +148,7 @@ function isCollide() { //No puedo refactorizar las 2 primeras porque la posicion
       bird.height + bird.positionY < 388) {  
          gameOver();
    }    
-   collisionDetector(bird, monster, monsterDie);
+   collisionDetector(bird, monster, function(){monsterDie(monster)});
+   collisionDetector(bird, otherMonster, function(){monsterDie(otherMonster)});
    collisionDetector(bird, banana,  banana.grab);
 };

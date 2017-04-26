@@ -13,10 +13,10 @@ var score = {
    multiplyScore: function(){    //cambia amount a x2 o x3
    	if(!inmune.have){
    		this.amount = 0.2
-   	}else if(inmune.have && this.tripleScore && monster.velocityX !== 0){
+   	}else if(inmune.have && this.tripleScore && monster.velocityX){
    		this.amount = 0.6;
    		$("#points").append('<span class="multiply"> x3<span>')
-   	}else if (inmune.have && monster.velocityX !== 0){
+   	}else if (inmune.have && monster.velocityX){
    		this.amount = 0.4;
    		$("#points").append('<span class="multiply"> x2<span>')
    	}

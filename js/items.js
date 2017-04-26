@@ -1,4 +1,4 @@
-var monster = {
+/*var monster = {
    width: 60,
    height: 49,
    positionX:1400,      //Guarda la posicion -X del monster en cada frame. 1400px es la inicial.
@@ -17,8 +17,36 @@ var monster = {
       return this.velocityX = 0;
    },                                  // Pone a 0 velocityX, para que el monstruo deje de avanzar
    addRandom: 0.998
-};
+};*/
 
+var Monster = function(name){
+   var obj = {
+      name: name,
+      width: 60,
+      height: 49,
+      positionX:1400,
+      positionY: 0,
+      velocityX:-6,
+      unique: true,
+      addRandom: 0,//998,
+   };
+
+   obj.positionYGenerator = function(){return Math.random()*(322)+49;};
+   obj.move = function(){    
+      this.positionX += this.velocityX;
+      $("."+obj.name).css({"left":this.positionX+ "px"});     
+   };
+   obj.remove = function(){
+      $("."+obj.name).remove();
+   };
+   obj.stop = function(){
+      return this.velocityX = 0;
+   }                      
+   return obj;
+}
+
+var monster = Monster("monster");
+var otherMonster = Monster("otherMonster");
 
 var banana = {
    height: 20,
@@ -93,10 +121,10 @@ function bananaRandom(){
 };
 
 //Ejecuta la funcion addItem cuando se da la condicion
-function monsterRandom(){
+function monsterRandom(enemy, className){
    var random = Math.random()
-   if(monster.unique && random > monster.addRandom){
-      addItem(monster, "monster");
+   if(enemy.unique && random > enemy.addRandom){
+      addItem(enemy, className);
    }
 };
 
@@ -109,9 +137,9 @@ function invencibility(){
 }
 
 //Si te toca el monstruo mientras eres invencible mueres
-function monsterDie(){
+function monsterDie(enemy){
    if(inmune.have){
-      monster.remove();
+      enemy.remove();
       sounds.soundKick.play();
       score.tripleScore = true;
    }else {gameOver()}

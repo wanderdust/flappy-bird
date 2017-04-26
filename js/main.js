@@ -30,14 +30,17 @@ function mainloop() {
    //Hace que el objeto avance
    moveItem(banana);
    moveItem(monster);
+   moveItem(otherMonster)
 
    //Elimina los objetos que se salen del mapa
    removeItem(monster, "monster");
+   removeItem(otherMonster, "otherMonster")
    removeItem(banana, "banana");
 
    //Los crea aleatoriamente
    bananaRandom();
-   monsterRandom();
+   monsterRandom(monster, "monster");
+   monsterRandom(otherMonster, "otherMonster");
 
    //Establece cuando el bird es invencible
    invencibility();
