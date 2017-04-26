@@ -1,6 +1,6 @@
 var bird = {
-   width: 34,           
-   height: 24,
+   width: 30,           
+   height: 20,
    positionX: 60,      //Posicion X del bird.
    positionY: 210,     // guarda la posicion del pajaro en cada frame,
    velocityY: 6,       // Velocidad -y del pajaro. No cte.
