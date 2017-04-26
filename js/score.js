@@ -34,6 +34,7 @@ function addDificutly(){
     environment.obstacleHeight = 200
   }else if(score.count > 200 && score.count < 900){
       environment.obstacleHeight = 235;
+      monster.addRandom = 0.998;
    }else if (score.count >= 900 && score.count < 1500){
        environment.obstacleHeight = 250;
    }else if (score.count >= 1500 && score.count < 2000){

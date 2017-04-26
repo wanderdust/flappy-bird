@@ -57,11 +57,11 @@ function resetAllParameters(){
 	monster.velocityX = -6;
 	monster.positionX = 1400;
 	monster.positionY = -50;
-	monster.addRandom = 0.998;
+	monster.addRandom = 0.999;
 	otherMonster.velocityX = -6;
 	otherMonster.positionX = 1400;
 	otherMonster.positionY = -50;
-	otherMonster.addRandom = 0.998;
+	otherMonster.addRandom = 0.999;
 	banana.velocityX = -4.05;
 	banana.positionX = 1400;
 	banana.positionY = -50;

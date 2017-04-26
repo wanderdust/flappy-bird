@@ -7,7 +7,7 @@ var Enemy = function(name){
       positionY: 0,     //Guarda la posicion aleatoria -Y entre 49px y 371px (ver monsterCreate()).
       velocityX:-6,     //Numero de px que avanza en cada frame. Cte.
       unique: true,     //variable para que solo se pueda crear un monstruo (de ese objeto) a la vez.
-      addRandom: 0.9989,//Numero para la Condicion enemyRandom.
+      addRandom: 0.9995,//Numero para la Condicion enemyRandom.
    };
    $.extend(obj, Enemy.methods)                   
    return obj;
@@ -39,7 +39,7 @@ var Collectable = function(name){
       positionY: 0,     //Guarda la posicion aleatoria -Y generada por positionYGenerator.
       velocityX: -4.05, //Numero de px que avanza en cada frame.Cte.
       unique: true,     //variable para que solo se pueda crear un collectable (de ese objeto) a la vez.
-      addRandom:0//0.75, //Numero para la Condicion enemyRandom.
+      addRandom:0.75, //Numero para la Condicion enemyRandom.
    }
    $.extend(obj, Collectable.methods)
    return obj;
