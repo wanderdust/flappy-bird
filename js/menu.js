@@ -5,22 +5,23 @@ var startMenu = {
    		$(".bird").css({"top":210+"px"});
 		bird.positionY = 210;
 		environment.animationStart();
-   },
+   },	//Para anadir el menu principal.
    remove: function(){
    	$("#start-menu").remove();
-   },
-   restart: function(){return this.firstClick = false}
-}
+   },	//Para eliminar el menu principal.
+   restart: function(){
+   	return this.firstClick = false
+   },	//Para resetear la conicion firstClick.
+};
 
 var gameoverMenu = {
 	add: function(){
 		$("#gameplay-area").append('<div id="menu-gameover"><div id="scoreboard"><div id="scoreFinal"></div><div id="highScore"></div><div id="medal"></div></div><a href="#"><div id="replay"></div></a></div>');
-	},
+	},	//Para anadir el menu Game Over con la puntuacion.
 	remove: function(){
 		$("#menu-gameover").remove();
-	}
-}
-
+	},	//Para eliminar el menu Game Over.
+};
 
 //Cuando haces el primer Click empieza el juego
 function startGame(){
@@ -28,11 +29,10 @@ function startGame(){
      	if(!startMenu.firstClick){
      		startMenu.remove();
       		gameLoop = setInterval(mainloop, environment.fps);    //Actualiza la posicion del pajaro en cada frame
-      		startMenu.firstClick = true;
-      		
-     	}
+      		startMenu.firstClick = true;   		
+     	};
    })
-}
+};
 
 //Aparece un menu de Game Over
 function menuGameOver(){
@@ -56,24 +56,22 @@ function resetAllParameters(){
 	monster.velocityX = -6;
 	monster.positionX = 1400;
 	monster.positionY = -50;
+	monster.addRandom = 0.998;
 	otherMonster.velocityX = -6;
 	otherMonster.positionX = 1400;
 	otherMonster.positionY = -50;
-
+	otherMonster.addRandom = 0.998;
 	banana.velocityX = -4.05;
 	banana.positionX = 1400;
 	banana.positionY = -50;
+	banana.addRandom = 0.75;
 	environment.fallCondition = false;
 	environment.obstacleCount = 119;
 	score.init = 0;
 	$("#points").html("0");
 	inmune.have = false;
 	sounds.oneHit = true;
-	banana.addRandom = 0.75;
-    monster.addRandom = 0.998;
-    otherMonster.addRandom = 0.998;
-
-}
+};
 
 //Reinicia el juego para volver a empezar
 function restart(){
@@ -84,4 +82,4 @@ function restart(){
 	//Pone firstClick en false instantes despues de añadir el menu
 	//para evitar que se ejecute automaticamente al dar a replay
 	setTimeout(function(){startMenu.firstClick = false;}, 1); 	
-}
+};
