@@ -87,13 +87,14 @@ function addItem(obj, domClassName){
      } 
 };
 
-// Que el platano o monstruo se mueva
+// Que el platano o monstruo se mueva.
 function moveItem(obj){
    if(!obj.unique){
       obj.move();
    }
 };
 
+//Agrupa todos los objetos que se van a mover por el mapa.
 function executeMove(){
    moveItem(banana);
    moveItem(monster);
@@ -109,7 +110,14 @@ function removeItem(obj, domClassName){
       }
 };
 
-//Ejecuta la funcion addItem cuando se da la condicion
+//Agrupa todos los objetos que se van a eliminar cuando se ejecute removeItem.
+function executeRemoveItem(){
+   removeItem(monster, "monster");
+   removeItem(otherMonster, "otherMonster")
+   removeItem(banana, "banana");
+}
+
+//Ejecuta la funcion addItem cuando se da la condicion.
 function collectableRandom(collectable, domClassName){
    var random = Math.random()
    if(collectable.unique && environment.obstacleCount == 10 && random > collectable.addRandom){
@@ -117,12 +125,18 @@ function collectableRandom(collectable, domClassName){
    }
 };
 
-//Ejecuta la funcion addItem cuando se da la condicion
+//Ejecuta la funcion addItem cuando se da la condicion.
 function enemyRandom(enemy, domClassName){
    var random = Math.random()
    if(enemy.unique && random > enemy.addRandom){
       addItem(enemy, domClassName);
    };
+};
+
+function executeAddRandom(){
+   collectableRandom(banana, "banana");
+   enemyRandom(monster, "monster");
+   enemyRandom(otherMonster, "otherMonster");
 };
 
 //Te hace invencible durante 300fps
