@@ -22,8 +22,8 @@
 var Enemy = function(name){
    var obj = {
       name: name,
-      width: 60,
       height: 49,
+      width: 60,
       positionX:1400,
       positionY: 0,
       velocityX:-6,
@@ -94,7 +94,7 @@ var Collectable = function(name){
       positionY: 0,
       velocityX: -4.05,
       unique: true,
-      addRandom:0.75,
+      addRandom:0//0.75,
    }
    $.extend(obj, Collectable.methods)
    return obj;
@@ -111,10 +111,10 @@ Collectable.methods = {
    },
    move: function(){
       this.positionX += this.velocityX;
-      $(".banana").css({"left":this.positionX+ "px"});     
+      $("."+this.name).css({"left":this.positionX+ "px"});     
    },
    grab: function(){
-      $(".banana").remove();
+      $("."+this.name).remove();
       inmune.have = true;
       inmune.time = 300;
       sounds.soundBanana.play();
@@ -123,7 +123,7 @@ Collectable.methods = {
       return this.velocityX = 0;
    },
    remove: function(){
-       $(".banana").remove();
+       $("."+this.name).remove();
    },
 };
 
@@ -131,11 +131,11 @@ var banana = Collectable("banana")
 
 
 // Que aparezca un platano o monstruo en el mapa
-function addItem(obj, className){
+function addItem(obj, domClassName){
     if(obj.unique){            //si es 0 retorna false, si es cualquier otro numero retorna true
          var x = obj.positionYGenerator();
          obj.positionY = x;
-         $("#gameplay-area").append("<div class='"+className+" animated' style='top:"+ obj.positionY +"px'></div>");
+         $("#gameplay-area").append("<div class='"+domClassName+" animated' style='top:"+ obj.positionY +"px'></div>");
          obj.unique = false;
      } 
 };
@@ -148,27 +148,27 @@ function moveItem(obj){
 };
 
 // Elimina los objetos que se han salido del mapa
-function removeItem(obj, className){
+function removeItem(obj, domClassName){
    if(obj.positionX < -50){
-         $("."+className).remove();
+         $("."+domClassName).remove();
          obj.positionX = 1400;
          obj.unique = true;
       }
 };
 
 //Ejecuta la funcion addItem cuando se da la condicion
-function bananaRandom(){
+function collectableRandom(collectable, domClassName){
    var random = Math.random()
-   if(banana.unique && environment.obstacleCount == 10 && random > banana.addRandom){
-      addItem(banana, "banana");
+   if(collectable.unique && environment.obstacleCount == 10 && random > collectable.addRandom){
+      addItem(collectable, domClassName);
    }
 };
 
 //Ejecuta la funcion addItem cuando se da la condicion
-function monsterRandom(enemy, className){
+function enemyRandom(enemy, domClassName){
    var random = Math.random()
    if(enemy.unique && random > enemy.addRandom){
-      addItem(enemy, className);
+      addItem(enemy, domClassName);
    }
 };
 

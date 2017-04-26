@@ -3,6 +3,7 @@ var environment = {
    fps: 1000/60,              // el loop se ejecuta 60fps 
    fallCondition: false,      // Pasa a ser true cuando choca con un obstaculo y asi se pone la velocidad a 0 en la funcion jump()
    obstacleCount: 119,        //Variable para el bucle que genera los obstaculos
+   obstacleHeight: 200,
    obstacleCountStop: function(){return this.obstacleCount = 121},
    animationStop: function(){
       $(".animated").css({"-webkit-animation-play-state": 'paused'});    //funcion para desactivar animaciones css
@@ -14,7 +15,6 @@ var environment = {
       $(".animated").css({"-moz-animation-play-state": 'running'});
       $(".animated").css({"-o-animation-play-state": 'running'});
    },
-   obstacleHeight: 200,
    stop: function(){clearInterval(gameLoop)},   //Para el setInterval
    obstacleRemove: function(){
       $(".obstacle-animated").remove();
@@ -150,5 +150,5 @@ function isCollide() { //No puedo refactorizar las 2 primeras porque la posicion
    }    
    collisionDetector(bird, monster, function(){monsterDie(monster)});
    collisionDetector(bird, otherMonster, function(){monsterDie(otherMonster)});
-   collisionDetector(bird, banana,  banana.grab);
+   collisionDetector(bird, banana,  function(){banana.grab()});
 };

@@ -38,9 +38,9 @@ function mainloop() {
    removeItem(banana, "banana");
 
    //Los crea aleatoriamente
-   bananaRandom();
-   monsterRandom(monster, "monster");
-   monsterRandom(otherMonster, "otherMonster");
+   collectableRandom(banana, "banana");
+   enemyRandom(monster, "monster");
+   enemyRandom(otherMonster, "otherMonster");
 
    //Establece cuando el bird es invencible
    invencibility();
