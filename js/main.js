@@ -28,10 +28,7 @@ function mainloop() {
    isCollide();
 
    //Hace que el objeto avance
-   moveItem(banana);
-   moveItem(monster);
-   moveItem(otherMonster)
-
+   executeMove();
    //Elimina los objetos que se salen del mapa
    removeItem(monster, "monster");
    removeItem(otherMonster, "otherMonster")
