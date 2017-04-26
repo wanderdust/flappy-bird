@@ -28,22 +28,25 @@ var Enemy = function(name){
       positionY: 0,
       velocityX:-6,
       unique: true,
-      addRandom: 0,//998,
+      addRandom: 0.9989,
    };
-
-   obj.positionYGenerator = function(){return Math.random()*(322)+49;};
-   obj.move = function(){    
-      this.positionX += this.velocityX;
-      $("."+obj.name).css({"left":this.positionX+ "px"});     
-   };
-   obj.remove = function(){
-      $("."+obj.name).remove();
-   };
-   obj.stop = function(){
-      return this.velocityX = 0;
-   }                      
+   $.extend(obj, Enemy.methods)                   
    return obj;
 }
+
+Enemy.methods = {
+   positionYGenerator: function(){return Math.random()*(322)+49;},
+   move: function(){    
+      this.positionX += this.velocityX;
+      $("."+this.name).css({"left":this.positionX+ "px"});     
+   },
+   remove: function(){
+      $("."+this.name).remove();
+   },
+   stop: function(){
+      return this.velocityX = 0;
+   },
+};
 
 var monster = Enemy("monster");
 var otherMonster = Enemy("otherMonster");
@@ -93,33 +96,36 @@ var Collectable = function(name){
       unique: true,
       addRandom:0.75,
    }
+   $.extend(obj, Collectable.methods)
+   return obj;
+};
 
-   obj.positionYGenerator = function(){
+Collectable.methods = {
+   positionYGenerator: function(){
       var heightTop = $(".obstacle-top:last").height();
       var heightBottom = $(".obstacle-bottom:last").height();
       var result = 388 - heightTop - heightBottom;
       var middle = result/2;
       return middle + heightTop+16;
 
-   };
-   obj.move = function(){
+   },
+   move: function(){
       this.positionX += this.velocityX;
       $(".banana").css({"left":this.positionX+ "px"});     
-   };
-   obj.grab = function(){
+   },
+   grab: function(){
       $(".banana").remove();
       inmune.have = true;
       inmune.time = 300;
       sounds.soundBanana.play();
-   };
-   obj.stop = function(){
+   },
+   stop: function(){
       return this.velocityX = 0;
-   };
-   obj.remove = function(){                    //Funcion para eliminar la banana sin mas
+   },
+   remove: function(){
        $(".banana").remove();
-   }
-   return obj;
-}
+   },
+};
 
 var banana = Collectable("banana")
 
