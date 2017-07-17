@@ -5,6 +5,7 @@ Mi objetivo al crear este juego ha sido mejorar mis conocimientos de javascript,
 Es posible que el juego lagee a veces, pero esto es lo mejor que he conseguido hasta el momento. La razón por la cual no he usado canvas ha sido porque queria usar javascript sin mas sin tener que meterme a aprender cosas no tan relevantes. ¡Cualquier aportación para hacer el juego mejor o más divertido será bienvenida!
 
 -------
+Link: https://wanderdust.github.io/flappy-bird/#
 
 INSTRUCCIONES
 --------------
@@ -55,6 +56,7 @@ My main goal when I created this game was to learn and improve my knowledge in J
 The game can get laggy every so often, but this is the best I could get so far. The reason why I havent tried using canvas is because I didn't want to spend any more time learning things that are not so relevant in Javascript. But if you have any improvements to the game to make it better or more fun, it will be welcomed!
 
 ----------
+Live app: https://wanderdust.github.io/flappy-bird/#
 
 HOW TO PLAY
 ------------
