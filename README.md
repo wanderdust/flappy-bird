@@ -1,4 +1,6 @@
 FLAPPY BIRD con HTML5
+=====================
+
 
 Link: https://wanderdust.github.io/flappy-bird/#
 
@@ -18,14 +20,8 @@ No soy dueño de estos elementos ni tengo permiso explícito de sus creadores pa
 
 No tengo intencion de robar este juego, o reclamarlo como mio. Esto es solo una recreacion para divertirme. ¡Si su dueño o cualquier otra persona con derechos de copyright quiere reclamarlo que lo haga saber!
 
+
 ------
-Gracias a **[@nebez](https://github.com/nebez/floppybird) por servirme como guía en las primeras fases del juego con su repositorio.
-
-
-
-
---ENGLISH--
-
 
 FLAPPY BIRD WITH HTML5
 =====================
