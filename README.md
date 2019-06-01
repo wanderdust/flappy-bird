@@ -5,8 +5,6 @@
 - Click para saltar.
 - Los plátanos :banana: te hacen invencible durante un tiempo limitado en el que podras matar a los malos y atravesar obstaculos, además de multiplicar tu puntuación.
 
--------------
-
 ## IMPORTANTE
 
 Todos los elementos visuales y texturas han sido extraidos del juego original Flappy Bird. Yo solo he hecho el código, no he diseñado los elementos visuales. 
@@ -23,8 +21,6 @@ No tengo intencion de robar este juego, o reclamarlo como mio. Esto es solo una 
 
 - Click to jump.
 - Bananas :banana: make you invincible for a few seconds. During this time you can go through the obstacles and kill the enemies, plus you get extra score.
-
-----------------
 
 ## IMPORTANT
 
