@@ -1,19 +1,14 @@
-FLAPPY BIRD con HTML5
-=====================
+# FLoPPY BIRD
 
+## INSTRUCCIONES
 
-Link: https://wanderdust.github.io/flappy-bird/#
-
-INSTRUCCIONES
---------------
 - Click para saltar.
-- Los plátanos te hacen invencible durante un tiempo limitado en el que podras matar a los malos y atravesar obstaculos, además de multiplicar tu puntuación.
-- Las colisiones no son estrictas.
+- Los plátanos :banana: te hacen invencible durante un tiempo limitado en el que podras matar a los malos y atravesar obstaculos, además de multiplicar tu puntuación.
 
 -------------
 
-IMPORTANTE
----------
+## IMPORTANTE
+
 Todos los elementos visuales y texturas han sido extraidos del juego original Flappy Bird. Yo solo he hecho el código, no he diseñado los elementos visuales. 
 
 No soy dueño de estos elementos ni tengo permiso explícito de sus creadores para utilizarlos. Pertenecen a su creador original Dong Nguyen y .GEARS games(http://www.dotgears.com/).
@@ -23,21 +18,16 @@ No tengo intencion de robar este juego, o reclamarlo como mio. Esto es solo una 
 
 ------
 
-FLAPPY BIRD WITH HTML5
-=====================
 
-Live app: https://wanderdust.github.io/flappy-bird/#
+## HOW TO PLAY
 
-HOW TO PLAY
-------------
 - Click to jump.
-- Bananas make you invincible for a few seconds. During this time you can go through the obstacles and kill the enemies, plus you get extra score.
-- Collisions are not strict.
+- Bananas :banana: make you invincible for a few seconds. During this time you can go through the obstacles and kill the enemies, plus you get extra score.
 
 ----------------
 
-IMPORTANT
----------
+## IMPORTANT
+
 All the visual assets and the textures have been extrated from the original game Flappy Bird. I´ve only coded it, not designed the visual assets. 
 
 I am not the owner of this assets nor I have explicit permission from its owners to use them. They all belong to its original creator Dong Nguyen and .Gears games(http://www.dotgears.com/).
